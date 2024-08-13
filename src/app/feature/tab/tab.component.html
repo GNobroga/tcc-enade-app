@@ -1,4 +1,4 @@
-<ion-tabs>
+<ion-tabs (ionTabsDidChange)="onChange($event)">
   <ion-fab color="secondary" horizontal="center" vertical="bottom" class="bottom-5 scale-125">
     <ion-fab-button>
       <ion-icon name="game-controller"></ion-icon>
@@ -6,8 +6,18 @@
   </ion-fab>
   <ion-tab-bar slot="bottom" class="rounded-tl-2xl rounded-tr-2xl">
     <ion-tab-button tab="home">
-      <ion-icon icon="home"></ion-icon>
-      <ion-label class="text-white">Home</ion-label>
+      <ion-icon icon="{{ selectedTab() === 'home' ? 'home' : 'home-outline' }}"></ion-icon>
+      <ion-label class="text-white">Início</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="achievement" class="me-8">
+      <ion-icon name="{{ selectedTab() === 'achievement' ? 'medal-sharp' : 'medal-outline' }}"></ion-icon>
+      <ion-label class="text-white">Conquistas</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="home" class="ms-8">
+      <ion-icon name="bar-chart-sharp"></ion-icon>
+      <ion-label class="text-white">Ranking</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="home">
       <ion-icon icon="person"></ion-icon>
