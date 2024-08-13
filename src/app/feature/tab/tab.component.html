@@ -15,8 +15,8 @@
       <ion-label class="text-white">Conquistas</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="home" class="ms-8">
-      <ion-icon name="bar-chart-sharp"></ion-icon>
+    <ion-tab-button tab="ranking" class="ms-8">
+      <ion-icon name="{{ selectedTab() === 'ranking' ? 'bar-chart-sharp' : 'bar-chart-outline' }}"></ion-icon>
       <ion-label class="text-white">Ranking</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="home">

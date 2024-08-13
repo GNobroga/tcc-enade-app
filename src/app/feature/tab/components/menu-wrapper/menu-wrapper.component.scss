@@ -1,5 +1,5 @@
 ion-menu {
-  --min-width: 100svw;
+  --min-width: 80svw;
 }
 
 ion-toolbar {
@@ -11,7 +11,7 @@ ion-menu-button {
 }
 
 
-ion-button {
+.button-coins {
   --background: white !important;
   --border-radius: 1rem !important;
 
@@ -20,3 +20,10 @@ ion-button {
   }
 }
 
+
+ion-menu {
+
+  &::part(backdrop) {
+    background-color: transparent;
+  }
+}

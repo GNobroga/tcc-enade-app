@@ -1,21 +1,24 @@
-<ion-menu contentId="main-content">
+<ion-menu [contentId]="menuContent" [menuId]="menuId" >
   <ion-content class="ion-padding">This is the menu content.</ion-content>
 </ion-menu>
-<div class="ion-page" id="main-content">
+<div class="ion-page" [id]="menuContent">
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button [menu]="menuId"></ion-menu-button>
       </ion-buttons>
       <ion-buttons slot="end">
-        <ion-button>
-          <span slot="start" class="bg-[#c3b958] scale-125 rounded-full me-2 w-5 h-5 flex items-center justify-center">
-            <ion-icon name="star" class="text-[#815F00]"></ion-icon>
+        <ion-button class="button-coins">
+          <span slot="start" class=" scale-125 rounded-full me-2 w-5 h-5 flex items-center justify-center">
+            <i class="fa-solid fa-coins text-[#c9922b]"></i>
           </span>
           <span class="me-2">6000</span>
           <span slot="end" class="bg-[var(--ion-color-primary)] scale-125 rounded-full w-5 h-5 flex items-center justify-center">
             <ion-icon name="add" class="text-white"></ion-icon>
           </span>
+        </ion-button>
+        <ion-button>
+          <i class="fa-solid fa-store text-white text-lg"></i>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>

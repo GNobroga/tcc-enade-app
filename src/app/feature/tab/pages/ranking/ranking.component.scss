@@ -1,0 +1,18 @@
+.rectangle {
+  @apply relative;
+
+
+  &__sub {
+    @apply block absolute w-full;
+    height: 30px;
+    top: -10%;
+    left: 0;
+    transform: perspective(100px) rotateX(40deg);
+    transform-origin: bottom;
+
+  }
+}
+
+ion-item:nth-child(2n + 1) {
+  --background: #eee;
+}

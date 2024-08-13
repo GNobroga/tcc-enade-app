@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MenuWrapperComponent } from './components/menu-wrapper/menu-wrapper.component';
 import { AchievementComponent } from './pages/achievement/achievement.component';
+import { RankingComponent } from './pages/ranking/ranking.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AchievementComponent } from './pages/achievement/achievement.component'
     TabComponent,
     HomePageComponent,
     MenuWrapperComponent,
-    AchievementComponent
+    AchievementComponent,
+    RankingComponent
   ],
   imports: [
     SharedModule,

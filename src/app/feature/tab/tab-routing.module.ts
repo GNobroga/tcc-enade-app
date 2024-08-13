@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabComponent } from './tab.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AchievementComponent } from './pages/achievement/achievement.component';
+import { RankingComponent } from './pages/ranking/ranking.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'achievement',
         component: AchievementComponent,
+      },
+      {
+        path: 'ranking',
+        component: RankingComponent,
       }
     ],
   }
