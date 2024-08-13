@@ -9,6 +9,7 @@ import { TabComponent } from './tab.component';
 import { RankingPageComponent } from './pages/ranking-page/ranking-page.component';
 import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
 import { StatisticPageComponent } from './pages/statistic-page/statistic-page.component';
+import { MyDataPageComponent } from './pages/my-data-page/my-data-page.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { StatisticPageComponent } from './pages/statistic-page/statistic-page.co
     AchievementPageComponent,
     RankingPageComponent,
     PerfilPageComponent,
-    StatisticPageComponent
+    StatisticPageComponent,
+    MyDataPageComponent
   ],
   imports: [
     SharedModule,

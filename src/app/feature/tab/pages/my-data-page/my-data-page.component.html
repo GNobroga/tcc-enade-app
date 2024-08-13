@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-item color="primary">
+      <ion-back-button slot="start" defaultHref="/tabs"></ion-back-button>
+      <ion-text class="text-white">Meus Dados</ion-text>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="p-4">
+    <ion-text class="font-semibold text-lg">Foto</ion-text>
+    <span class="flex flex-col items-center gap-4">
+      <ion-avatar class="w-20 h-20">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-button expand="true" class="w-full h-12" color="secondary">Mudar foto</ion-button>
+    </span>
+
+    <ion-item-divider></ion-item-divider>
+    
+    <ion-text class="font-semibold text-lg">Perfil</ion-text>
+    <span class="flex flex-col gap-4 mt-3 mb-5">
+      <span class="flex flex-col gap-1">
+        <ion-label class="text-sm">Nome completo</ion-label>
+        <ion-input type="text" fill="outline" placeholder="Gabriel G."></ion-input>
+      </span>
+      <span class="flex flex-col gap-1">
+        <ion-label class="text-sm">Apelido</ion-label>
+        <ion-input type="text" fill="outline" placeholder="Gnobroga"></ion-input>
+      </span>
+      <span class="flex flex-col gap-1">
+        <ion-label class="text-sm">E-mail</ion-label>
+        <ion-input type="email" fill="outline" placeholder="gabrielcardosogirarde@gmail.com"></ion-input>
+      </span>
+    </span>
+
+    <span class="flex justify-center">
+      <ion-button color="success">
+        <ion-icon slot="start" name="checkmark-done"></ion-icon>
+        <ion-text>Atualizar Dados</ion-text>
+      </ion-button>
+    </span>
+  </div>
+</ion-content>
