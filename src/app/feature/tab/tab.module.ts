@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TabRoutingModule } from './tab-routing.module';
@@ -17,6 +17,7 @@ import { MenuWrapperComponent } from './components/menu-wrapper/menu-wrapper.com
   imports: [
     SharedModule,
     TabRoutingModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export default class TabModule { }

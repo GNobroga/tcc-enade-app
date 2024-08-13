@@ -10,3 +10,13 @@ ion-menu-button {
   --color: white;
 }
 
+
+ion-button {
+  --background: white !important;
+  --border-radius: 1rem !important;
+
+  &::part(native) {
+    padding: 0 0.6rem;
+  }
+}
+
