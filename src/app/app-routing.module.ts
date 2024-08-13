@@ -9,7 +9,11 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    loadChildren: () => import('./feature/feature.module'),
+    loadChildren: () => import('./feature/login/login.module'),
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./feature/tab/tab.module'),
   }
 ];
 

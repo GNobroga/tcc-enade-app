@@ -1,3 +1,26 @@
-<p>
-  menu-wrapper works!
-</p>
+<ion-menu contentId="main-content">
+  <ion-content class="ion-padding">This is the menu content.</ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button>
+          <span slot="start" class="bg-[#c3b958] scale-125 rounded-full me-2 w-5 h-5 flex items-center justify-center">
+            <ion-icon name="star" class="text-orange-100"></ion-icon>
+          </span>
+          <span class="me-2">6000</span>
+          <span slot="end" class="bg-[var(--ion-color-primary)] scale-125 rounded-full w-5 h-5 flex items-center justify-center">
+            <ion-icon name="add" class="text-white"></ion-icon>
+          </span>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ng-content></ng-content>
+  </ion-content>
+</div>
