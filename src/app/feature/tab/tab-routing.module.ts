@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabComponent } from './tab.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { AchievementComponent } from './pages/achievement/achievement.component';
-import { RankingComponent } from './pages/ranking/ranking.component';
+import { AchievementPageComponent } from './pages/achievement-page/achievement-page.component';
+import { RankingPageComponent } from './pages/ranking-page/ranking-page.component';
+import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
+
 
 const routes: Routes = [
   {
@@ -21,13 +23,17 @@ const routes: Routes = [
       },
       {
         path: 'achievement',
-        component: AchievementComponent,
+        component: AchievementPageComponent,
       },
       {
         path: 'ranking',
-        component: RankingComponent,
+        component: RankingPageComponent,
       }
     ],
+  },
+  {
+    path: 'perfil',
+    component: PerfilPageComponent,
   }
 ];
 

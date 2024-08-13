@@ -1,13 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MenuWrapperComponent } from './components/menu-wrapper/menu-wrapper.component';
+import { AchievementPageComponent } from './pages/achievement-page/achievement-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TabRoutingModule } from './tab-routing.module';
 import { TabComponent } from './tab.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { MenuWrapperComponent } from './components/menu-wrapper/menu-wrapper.component';
-import { AchievementComponent } from './pages/achievement/achievement.component';
-import { RankingComponent } from './pages/ranking/ranking.component';
+import { RankingPageComponent } from './pages/ranking-page/ranking-page.component';
+import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
 
 
 @NgModule({
@@ -15,8 +15,9 @@ import { RankingComponent } from './pages/ranking/ranking.component';
     TabComponent,
     HomePageComponent,
     MenuWrapperComponent,
-    AchievementComponent,
-    RankingComponent
+    AchievementPageComponent,
+    RankingPageComponent,
+    PerfilPageComponent
   ],
   imports: [
     SharedModule,
