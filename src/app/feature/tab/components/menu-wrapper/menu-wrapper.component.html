@@ -1,5 +1,15 @@
 <ion-menu [contentId]="menuContent" [menuId]="menuId" >
-  <ion-content class="ion-padding">This is the menu content.</ion-content>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <div class="text-center">
+        <ion-text class=" text-white text-lg">Menu</ion-text>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+
+
+  </ion-content>
 </ion-menu>
 <div class="ion-page" [id]="menuContent">
   <ion-header>
@@ -17,7 +27,7 @@
             <ion-icon name="add" class="text-white"></ion-icon>
           </span>
         </ion-button>
-        <ion-button>
+        <ion-button href="/tabs/store">
           <i class="fa-solid fa-store text-white text-lg"></i>
         </ion-button>
       </ion-buttons>

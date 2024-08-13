@@ -10,11 +10,5 @@ import { Router } from '@angular/router';
 export class PerfilPageComponent {
 
 
-  constructor(
-    public readonly _location: Location
-  ) { }
 
-  back() {
-    this._location.back();
-  }
 }
