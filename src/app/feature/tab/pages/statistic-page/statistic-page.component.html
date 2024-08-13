@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start" defaultHref="/tabs/home"></ion-back-button>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-item slot="start" color="primary">
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <span class="flex flex-col text-white pb-2">
+        <ion-text class="font-medium">Olá, Gabriel</ion-text>
+        <ion-text class="text-sm">Como vai você?</ion-text>
+      </span>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="p-4">
+    <span>
+      <ion-segment value="buttons">
+        <ion-segment-button value="default">
+          <ion-label>Hoje</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="segment">
+          <ion-label>7 dias</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </span>
+
+    <div class="flex flex-wrap gap-3 mt-4">
+
+        <span class="flex flex-1 min-w-32 justify-between bg-white p-2 items-center rounded-lg">
+          <span class="flex flex-col">
+            <ion-text class="text-lg font-bold">0%</ion-text>
+            <ion-text class="text-sm">Taxa de acerto</ion-text>
+          </span>
+            <i class="fa-solid fa-chart-line text-2xl text-green-600"></i>
+        </span>
+
+
+        <span class="flex flex-1 min-w-32 justify-between bg-white p-2 items-center rounded-lg">
+          <span class="flex flex-col">
+            <ion-text class="text-lg font-bold">0</ion-text>
+            <ion-text class="text-sm">Questões no período</ion-text>
+          </span>
+            <i class="fa-solid fa-chart-line text-2xl text-green-600"></i>
+        </span>
+
+        <span class="flex flex-1 min-w-32 justify-between bg-white p-2 items-center rounded-lg">
+          <span class="flex flex-col">
+            <ion-text class="text-lg font-bold">0</ion-text>
+            <ion-text class="text-sm">Certas</ion-text>
+          </span>
+          <i class="fa-solid fa-check text-2xl text-green-600"></i>
+        </span>
+
+        <span class="flex flex-1 min-w-32 justify-between bg-white p-2 items-center rounded-lg">
+          <span class="flex flex-col">
+            <ion-text class="text-lg font-bold">0</ion-text>
+            <ion-text class="text-sm">Erradas</ion-text>
+          </span>
+          <i class="fa-solid fa-xmark text-2xl text-red-600"></i>
+        </span>
+
+        <span class="flex flex-1 min-w-40  bg-white p-2 items-center rounded-lg">
+          <i class="fa-solid fa-chart-simple  text-2xl text-green-600"></i>
+          <span class="flex flex-col ms-4">
+            <ion-text class="text-lg font-bold">?</ion-text>
+            <ion-text class="text-sm">Ranking Setembro</ion-text>
+          </span>
+        </span>
+
+        <span class="flex flex-1 min-w-40  bg-white p-2 items-center rounded-lg">
+          <i class="fa-solid fa-clock text-2xl text-green-600"></i>
+          <span class="flex flex-col ms-4">
+            <ion-text class="text-lg font-bold">0 min</ion-text>
+            <ion-text class="text-sm">Tempo médio / questão</ion-text>
+          </span>
+        </span>
+
+
+    </div>
+
+
+
+  </div>
+</ion-content>

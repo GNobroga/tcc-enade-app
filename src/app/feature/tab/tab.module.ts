@@ -8,6 +8,7 @@ import { TabRoutingModule } from './tab-routing.module';
 import { TabComponent } from './tab.component';
 import { RankingPageComponent } from './pages/ranking-page/ranking-page.component';
 import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
+import { StatisticPageComponent } from './pages/statistic-page/statistic-page.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
     MenuWrapperComponent,
     AchievementPageComponent,
     RankingPageComponent,
-    PerfilPageComponent
+    PerfilPageComponent,
+    StatisticPageComponent
   ],
   imports: [
     SharedModule,

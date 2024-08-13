@@ -5,6 +5,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AchievementPageComponent } from './pages/achievement-page/achievement-page.component';
 import { RankingPageComponent } from './pages/ranking-page/ranking-page.component';
 import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
+import { StatisticPageComponent } from './pages/statistic-page/statistic-page.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'perfil',
     component: PerfilPageComponent,
+  },
+  {
+    path: 'statistic',
+    component: StatisticPageComponent,
   }
 ];
 
