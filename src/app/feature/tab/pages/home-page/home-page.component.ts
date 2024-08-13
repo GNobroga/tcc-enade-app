@@ -12,6 +12,7 @@ export class HomePageComponent  implements OnInit {
     loop: true,
     scrollbar: true,
     speed: 400,
+    slidesPerView: 1,
   }
 
   constructor() { }
