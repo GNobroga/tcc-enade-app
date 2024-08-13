@@ -1,0 +1,7 @@
+{
+  "name": "tcc-enade-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
