@@ -28,7 +28,7 @@
         <app-weekday-display/>
       </div>
     </div>
-    <div class="flex items-center gap-5 rounded-md bg-gradient-to-r p-4 to-[#6865E6] from-[#8856E9] text-white max-w-[90svw] mx-auto relative -top-3">
+    <div class="flex items-center gap-5 rounded-md bg-gradient-to-r p-4 to-[#6865E6] from-[#8856E9] text-white mx-4  relative -top-3">
       <div class="flex flex-col">
         <ion-text class="font-bold text-xl">Se torne melhor</ion-text>
         <ion-text class="text-sm mt-1">
@@ -45,12 +45,29 @@
   </div>
 </ion-header>
 <ion-content>
-  <div class="p-2">
-    <div class="flex gap-3 p-2 px-3 bg-gradient-to-b rounded-md from-[#FEB125] to-[#FB6822]">
-      <ion-img src="assets/image/dream.png" class="w-20 h-20"></ion-img>
+  <div class="p-2 px-3">
+    <div class="flex gap-3 p-2 px-3 bg-gradient-to-l rounded-md from-[#FEB125] to-[#FB6822]">
+      <ion-img src="assets/image/dream.png" class="min-w-16 min-h-16"></ion-img>
       <div class="flex flex-col text-white">
         <ion-text class="font-bold text-lg">Se esforce!</ion-text>
         <ion-text class="text-sm">Cada esforço conta. Está pronto para transformar seus sonhos em realidade?</ion-text>
+      </div>
+    </div>
+    <div class="mt-4">
+      <ion-text class="font-bold text-xl">Continue aprendendo</ion-text>
+    </div>
+    <div class="flex flex-col" class="bg-green-500 rounded-md mt-3 cursor-pointer" matRipple>
+      <span class="flex justify-end">
+        <ion-label class="relative right-5 top-2">
+          <span class="bg-white text-black w-14 rounded-full flex justify-center items-center text-xs uppercase h-5 ">Fácil</span>
+        </ion-label>
+      </span>
+      <div class="flex gap-5 px-2 pb-3">
+        <ion-img src="assets/image/struggle.png" class="w-14 h-14"></ion-img>
+        <div class="flex flex-col text-white">
+          <ion-text class="text-sm">Programação Básica</ion-text>
+          <ion-text class="text-lg font-bold">Desafio do dia</ion-text>
+        </div>
       </div>
     </div>
   </div>
