@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary" class="p-2 pt-4">
+    <ion-buttons slot="start">
+      <ion-avatar class="w-10 h-10">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="light" shape="round" fill="solid">
+        <ion-icon class="text-[#e1a840]" slot="start" name="trophy"></ion-icon>
+        <span class="opacity-80">9600</span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-item lines="none" color="primary">
+    <div class="flex flex-col text-white">
+      <ion-text class="text-3xl font-bold">Oi, Gabriel</ion-text>
+      <ion-text class="text-sm font-thin">O que você vai estudar hoje?</ion-text>
+    </div>
+  </ion-item>
+  <ion-item lines="none" color="primary" >
+    <div class="mt-4 w-full pb-4">
+        <div class="text-white flex items-center gap-2">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-text class="text-sm font-thin">Minha semana - 15 de agosto</ion-text>
+        </div>
+      <div class="mt-1">
+        <app-weekday-display/>
+      </div>
+    </div>
+  </ion-item>
+</ion-header>

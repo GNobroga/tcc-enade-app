@@ -1,27 +1,30 @@
 <ion-tabs (ionTabsDidChange)="onChange($event)">
-  <ion-fab color="secondary" horizontal="center" vertical="bottom" class="bottom-5 scale-125">
-    <ion-fab-button>
-      <ion-icon name="game-controller"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-tab-bar slot="bottom" class="rounded-tl-2xl rounded-tr-2xl">
-    <ion-tab-button tab="home">
-      <ion-icon icon="{{ selectedTab() === 'home' ? 'home' : 'home-outline' }}"></ion-icon>
-      <ion-label class="text-white">Início</ion-label>
+
+  <ion-tab-bar slot="bottom" class="rounded-tl-2xl rounded-tr-2xl" color="light">
+    <ion-tab-button tab="home" [ngClass]="{ 'tab-selected': selectedTab() === 'home' }">
+      <ion-icon icon="home"></ion-icon>
+      <ion-label>Início</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="achievement" class="me-8">
-      <ion-icon name="{{ selectedTab() === 'achievement' ? 'medal-sharp' : 'medal-outline' }}"></ion-icon>
-      <ion-label class="text-white">Conquistas</ion-label>
+
+    <ion-tab-button tab="ranking" [ngClass]="{ 'tab-selected': selectedTab() === 'ranking' }">
+      <ion-icon icon="bar-chart-sharp"></ion-icon>
+      <ion-label>Rank</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="ranking" class="ms-8">
-      <ion-icon name="{{ selectedTab() === 'ranking' ? 'bar-chart-sharp' : 'bar-chart-outline' }}"></ion-icon>
-      <ion-label class="text-white">Ranking</ion-label>
+    <ion-tab-button tab="tests" [ngClass]="{ 'tab-selected': selectedTab() === 'tests' }">
+      <ion-icon name="book"></ion-icon>
+      <ion-label>Simulados</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="perfil">
+
+    <ion-tab-button tab="achievement" [ngClass]="{ 'tab-selected': selectedTab() === 'achievement' }">
+      <ion-icon name="medal-sharp"></ion-icon>
+      <ion-label>Conquistas</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="perfil" [ngClass]="{ 'tab-selected': selectedTab() === 'perfil' }">
       <ion-icon icon="person"></ion-icon>
-      <ion-label class="text-white">Perfil</ion-label>
+      <ion-label>Perfil</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

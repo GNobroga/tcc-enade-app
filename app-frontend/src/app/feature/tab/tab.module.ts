@@ -11,6 +11,7 @@ import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
 import { StatisticPageComponent } from './pages/statistic-page/statistic-page.component';
 import { MyDataPageComponent } from './pages/my-data-page/my-data-page.component';
 import { StorePageComponent } from './pages/store-page/store-page.component';
+import { WeekdayDisplayComponent } from './components/weekday-display/weekday-display.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { StorePageComponent } from './pages/store-page/store-page.component';
     PerfilPageComponent,
     StatisticPageComponent,
     MyDataPageComponent,
-    StorePageComponent
+    StorePageComponent,
+    WeekdayDisplayComponent
   ],
   imports: [
     SharedModule,

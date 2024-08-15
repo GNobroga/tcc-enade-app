@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
+import { App } from '@capacitor/app';
+import { IonRouterOutlet, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +11,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class AppComponent {
-  constructor() {}
+
 }

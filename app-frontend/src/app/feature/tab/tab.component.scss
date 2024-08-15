@@ -1,7 +1,11 @@
-ion-icon {
-  color: white;
+
+ion-icon, ion-label {
+  @apply opacity-70;
 }
 
-ion-tab-bar {
-  --background: var(--ion-color-primary-shade);
+.tab-selected {
+
+  ion-icon, ion-label {
+    color: var(--ion-color-tertiary) !important;
+  }
 }
