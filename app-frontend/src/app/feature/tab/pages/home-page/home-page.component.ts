@@ -10,13 +10,6 @@ import { SwiperOptions } from 'swiper/types';
 })
 export class HomePageComponent {
 
-  public readonly slideOptions: SwiperOptions = {
-    loop: true,
-    scrollbar: true,
-    speed: 400,
-    slidesPerView: 1,
-    spaceBetween: 10,
-  }
 
   constructor() { }
 

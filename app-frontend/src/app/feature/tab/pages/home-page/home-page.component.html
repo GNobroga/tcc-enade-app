@@ -96,7 +96,7 @@
     <div class="mt-4 mb-3">
       <ion-text class="font-bold text-xl">Mais</ion-text>
     </div>
-    <swiper-container [options]="slideOptions">
+    <swiper-container [slidesPerView]="1" [loop]="true" [spaceBetween]="10" [speed]="300">
       <swiper-slide>
         <div class="bg-[#1B4C99] p-4 rounded-md cursor-pointer h-32" matRipple>
           <ion-label class="flex justify-end">
