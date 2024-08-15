@@ -1,5 +1,5 @@
 ion-item.form-group {
-  --background: #eeeeeea2;
+  --background: #eeeeeebf;
   --border-radius: 0.8rem;
 }
 
@@ -15,4 +15,9 @@ ion-item.form-group {
   }
 }
 
+
+.button-google, .button-github {
+  --background: #4286F5;
+  --border-radius: 0.5rem;
+}
 

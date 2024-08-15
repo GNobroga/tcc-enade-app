@@ -4,15 +4,16 @@
       <ion-input placeholder="E-mail"></ion-input>
     </ion-item>
 
+
     <ion-item lines="none" class="mt-4 form-group">
       <ion-input type="password" placeholder="Senha"></ion-input>
     </ion-item>
 
-    <div class="mt-3">
-      <ion-text color="primary" class="hover:opacity-80 cursor-pointer text-sm hover:underline">Esqueci minha senha</ion-text>
+    <div matRipple class="cursor-pointer  py-2 mt-2" matRippleColor="#fff">
+      <ion-text color="primary" class="text-sm">Esqueci minha senha</ion-text>
     </div>
 
-    <ion-button color="tertiary" expand="block"  class="button-login-email normal-case mt-4" href="/tabs">
+    <ion-button color="tertiary" expand="block"  class="button-login-email text-lg normal-case mt-4" href="/tabs">
       Entrar com E-mail
     </ion-button>
 
@@ -23,9 +24,17 @@
     </div>
 
     <div class="mt-4">
-      <ion-item lines="none" button color="tertiary">
-        <ion-icon slot="start" name="logo-google" color="light"></ion-icon>
-        <ion-text color="light">Entrar com o Google</ion-text>
+      <ion-item lines="none" button class="button-google">
+        <ion-img slot="start" src="assets/image/google.png"></ion-img>
+        <ion-text color="light" class="text-base">Entrar com o Google</ion-text>
+      </ion-item>
+    </div>
+
+
+    <div class="mt-4">
+      <ion-item lines="none" button class="button-github" color="dark">
+        <ion-img slot="start" src="assets/image/github.png"></ion-img>
+        <ion-text color="light" class="text-base">Entrar com o GitHub</ion-text>
       </ion-item>
     </div>
 
