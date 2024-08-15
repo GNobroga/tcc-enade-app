@@ -93,6 +93,44 @@
         </div>
       </div>
     </div>
+    <div class="mt-4 mb-3">
+      <ion-text class="font-bold text-xl">Mais</ion-text>
+    </div>
+    <swiper-container [options]="slideOptions">
+      <swiper-slide>
+        <div class="bg-[#1B4C99] p-4 rounded-md cursor-pointer h-32" matRipple>
+          <ion-label class="flex justify-end">
+            <ion-img src="assets/image/star.png" class="w-6 h-6"></ion-img>
+          </ion-label>
+          <div class="text-white flex flex-col">
+            <ion-text class="text-lg font-bold">Avalie meu app!</ion-text>
+            <ion-text class="text-sm">Me conte o que achou</ion-text>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="bg-[#5A2AD6] p-4 rounded-md cursor-pointer h-32" matRipple>
+          <ion-label class="flex justify-end">
+            <ion-img src="assets/image/friendship.png" class="w-6 h-6"></ion-img>
+          </ion-label>
+          <div class="text-white flex flex-col">
+            <ion-text class="text-lg font-bold">Convide seus amigos</ion-text>
+            <ion-text class="text-sm">Compartilhe com alguém!</ion-text>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="bg-[#5A2AD6] p-4 rounded-md cursor-pointer h-32" matRipple>
+          <ion-label class="flex justify-end">
+            <ion-img src="assets/image/mail.png" class="w-6 h-6"></ion-img>
+          </ion-label>
+          <div class="text-white flex flex-col">
+            <ion-text class="text-lg font-bold">Entre em contato!</ion-text>
+            <ion-text class="text-sm">Encontrou algum erro ou tem alguma sugestão? Manda para mim!</ion-text>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
   </div>
 </ion-content>
 

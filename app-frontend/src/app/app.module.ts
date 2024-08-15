@@ -1,13 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { register } from 'swiper/element/bundle';
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
-register();
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],

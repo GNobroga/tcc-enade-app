@@ -1,6 +1,8 @@
-import { Component, OnInit, Optional } from '@angular/core';
-import { App } from '@capacitor/app';
-import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { register } from 'swiper/element';
+
+register();
+
 
 @Component({
   selector: 'app-root',
