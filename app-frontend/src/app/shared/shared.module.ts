@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatInputModule,
     MatFormFieldModule,
     MatRippleModule,
+    MatDialogModule,
   ],
 })
 export class SharedModule {}
