@@ -1,14 +1,37 @@
-<span class="flex flex-col gap-2 p-2 pt-4">
-  <ion-input fill="outline" label="Nome completo" labelPlacement="floating"></ion-input>
-  <ion-input class="mt-2" fill="outline" label="Apelido" labelPlacement="floating"></ion-input>
-  <ion-input class="mt-2" fill="outline" label="Email" labelPlacement="floating"></ion-input>
-  <ion-input class="mt-2" type="password" fill="outline" label="Senha" labelPlacement="floating"></ion-input>
-  <ion-input class="mt-2" type="password" fill="outline" label="Confirmar senha" labelPlacement="floating"></ion-input>
-  <ion-text class="self-end hover:underline cursor-pointer">Esqueceu sua senha?</ion-text>
-  <ion-button color="secondary" class="h-12">Registrar</ion-button>
-  <ion-text class="text-sm text-center">
-    Já possui uma conta? <ion-text class="font-bold hover:underline cursor-pointer">
-      <ion-nav-link routerLink="/account/login">Entrar</ion-nav-link>
-    </ion-text>
-  </ion-text>
-</span>
+<app-login-form title="Registrar">
+  <div class="pb-4">
+    <ion-item lines="none" class="form-group">
+      <ion-input placeholder="Nome"></ion-input>
+    </ion-item>
+
+
+    <ion-item lines="none" class="mt-4 form-group">
+      <ion-input placeholder="E-mail"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="mt-4 form-group">
+      <ion-input type="password" placeholder="Senha"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="mt-4 form-group">
+      <ion-input type="password" placeholder="Confirmar senha"></ion-input>
+    </ion-item>
+
+    <ion-button color="tertiary" expand="block"  class="button-login-email normal-case mt-4">
+      Registrar com e-mail
+    </ion-button>
+
+    <div class="flex items-center gap-2 opacity-60 mt-4">
+      <div class="flex-1 h-[0.13rem] bg-black bg-opacity-40"></div>
+      <span>ou</span>
+      <div class="flex-1 h-[0.13rem] bg-black  bg-opacity-40"></div>
+    </div>
+
+    <div class="mt-4">
+      <ion-item lines="none" button color="tertiary">
+        <ion-icon slot="start" name="logo-google" color="light"></ion-icon>
+        <ion-text color="light">Registrar com Google</ion-text>
+      </ion-item>
+    </div>
+  </div>
+</app-login-form>

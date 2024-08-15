@@ -1,15 +1,11 @@
-<div class="p-2">
-  <span class="flex flex-col items-center text-center gap-2">
-    <ion-text color="light" class="text-3xl uppercase font-bold">Enadif</ion-text>
-    <ion-text color="light" class="text-sm">
-      Teste seus conhecimentos e prepare-se para o Exame Nacional de Desempenho dos Estudantes.
-    </ion-text>
-  </span>
-  <span class="block mt-5">
-    <ion-card>
-      <ion-card-content>
-        <ng-content></ng-content>
-      </ion-card-content>
-    </ion-card>
-  </span>
-</div>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title class="text-3xl font-semibold opacity-80 ">{{ title }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ng-content></ng-content>
+  </ion-card-content>
+</ion-card>
+
+

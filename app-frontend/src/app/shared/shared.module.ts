@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
-@NgModule({
+@NgModule({ 
   declarations: [],
   imports: [],
   exports: [
     CommonModule,
-    IonicModule
+    IonicModule,
   ],
 })
 export class SharedModule { }

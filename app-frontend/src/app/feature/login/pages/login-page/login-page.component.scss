@@ -1,0 +1,18 @@
+ion-item.form-group {
+  --background: #eeeeeea2;
+  --border-radius: 0.8rem;
+}
+
+
+
+.button-login-email {
+  --border-radius: 0.6rem;
+  --padding-top: 1rem;
+  --padding-bottom: 1rem;
+
+  &::part(native) {
+    color: white;
+  }
+}
+
+

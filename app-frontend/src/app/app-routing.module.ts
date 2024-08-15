@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'account',
+    redirectTo: 'welcome',
   },
   {
     path: 'account',
@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./feature/tab/tab.module'),
+  },
+  {
+    path: 'welcome',
+    loadChildren: () => import('./feature/welcome/welcome.module'),
   }
 ];
 
