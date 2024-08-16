@@ -6,7 +6,7 @@
 
 ![alt text](/docs/image-1.png)
 
-![alt text](image-2.png)
+![alt text](/docs/image-2.png)
 
 ![](/docs/image-3.png)
 
