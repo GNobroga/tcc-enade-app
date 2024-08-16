@@ -13,6 +13,7 @@ import { MyDataPageComponent } from './pages/my-data-page/my-data-page.component
 import { StorePageComponent } from './pages/store-page/store-page.component';
 import { WeekdayDisplayComponent } from './components/weekday-display/weekday-display.component';
 import { WeekdaySequenceDialogComponent } from './components/weekday-sequence-dialog/weekday-sequence-dialog.component';
+import { UpdateNameDialogComponent } from './components/update-name-dialog/update-name-dialog.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { WeekdaySequenceDialogComponent } from './components/weekday-sequence-di
     MyDataPageComponent,
     StorePageComponent,
     WeekdayDisplayComponent,
-    WeekdaySequenceDialogComponent
+    WeekdaySequenceDialogComponent,
+    UpdateNameDialogComponent
   ],
   imports: [
     SharedModule,

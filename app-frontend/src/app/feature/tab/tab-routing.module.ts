@@ -31,12 +31,12 @@ const routes: Routes = [
       {
         path: 'ranking',
         component: RankingPageComponent,
-      }
+      },
+      {
+        path: 'perfil',
+        component: PerfilPageComponent,
+      },
     ],
-  },
-  {
-    path: 'perfil',
-    component: PerfilPageComponent,
   },
   {
     path: 'statistic',

@@ -1,8 +1,15 @@
-ion-back-button {
-  --color: white !important;
-}
-
 ion-content {
   --background: #eee;
 }
 
+.profile {
+  ion-button {
+    --border-radius: 50%;
+    --background: #a8a5a5;
+  }
+}
+
+ion-button[fill=outline] {
+  --border-color: red;
+  --color: red;
+}
