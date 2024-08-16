@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [],
@@ -25,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatRippleModule,
     MatDialogModule,
+    ChartModule
   ],
 })
 export class SharedModule {}

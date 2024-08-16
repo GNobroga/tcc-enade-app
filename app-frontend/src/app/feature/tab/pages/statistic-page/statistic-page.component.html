@@ -28,7 +28,16 @@
       </ion-segment>
     </span>
 
-    <div class="flex flex-wrap gap-3 mt-4">
+    <div class="mt-4">
+      <ion-text class="font-medium text-lg">Acertos</ion-text>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow mt-4 mb-2">
+      <p-chart type="polarArea" [data]="data" [options]="options"/>
+    </div>
+
+
+    <div class="flex flex-wrap gap-3 mt-4 [&>span]:shadow">
 
         <span class="flex flex-1 min-w-32 justify-between bg-white p-2 items-center rounded-lg">
           <span class="flex flex-col">
