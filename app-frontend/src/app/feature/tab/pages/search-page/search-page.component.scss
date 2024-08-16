@@ -1,0 +1,16 @@
+ion-content {
+  --background: #ddddddc0;
+}
+
+.search-input {
+   background-color: transparent;
+
+   ion-item {
+     --border-radius: 1rem;
+   }
+}
+
+.search-term {
+  border: 1px solid green;
+  border-radius: 0.5rem;
+}
