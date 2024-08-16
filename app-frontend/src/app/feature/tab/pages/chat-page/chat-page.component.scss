@@ -1,0 +1,29 @@
+ion-header {
+  ion-toolbar, ion-item {
+    --background: var(--ion-color-primary);
+    --color: white;
+  }
+
+  ion-item {
+    --padding-top: 0.5rem;
+    --padding-bottom: 0.5rem;
+  }
+}
+
+ion-content {
+  --background: #eee;
+}
+
+ion-footer {
+  --background: #eee;
+  ion-toolbar {
+    --background: #eee;
+    padding: 1rem;
+
+    ion-item {
+      --border-radius: 0.5rem;
+      --padding-top: 0.5rem;
+      --padding-bottom: 0.5rem;
+    }
+  }
+}

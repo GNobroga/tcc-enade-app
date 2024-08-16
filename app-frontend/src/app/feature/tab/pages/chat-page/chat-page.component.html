@@ -1,0 +1,24 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-back-button slot="start" defaultHref="/tabs"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="p-4 flex flex-col gap-5">
+    <app-chat-message/>
+    <app-chat-message/>
+    <app-chat-message/>
+    <app-chat-message/>
+    <app-chat-message [isOwnMessage]="true"/>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-input placeholder="Digite alguma coisa.."></ion-input>
+      <ion-button size="large" slot="end" color="dark" class="scale-75">
+        <ion-icon color="light"  slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>
