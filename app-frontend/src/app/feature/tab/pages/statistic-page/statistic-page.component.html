@@ -17,7 +17,8 @@
 </ion-header>
 <ion-content>
   <div class="p-4">
-    <span>
+
+    <div>
       <ion-segment value="default">
         <ion-segment-button value="default">
           <ion-label>Hoje</ion-label>
@@ -26,65 +27,63 @@
           <ion-label>7 dias</ion-label>
         </ion-segment-button>
       </ion-segment>
-    </span>
-
-    <div class="mt-4">
-      <ion-text class="font-medium text-lg">Acertos</ion-text>
     </div>
 
-    <div class="bg-white p-4 rounded-lg shadow mt-4 mb-2">
+
+    <div class=" p-4 rounded-lg flex flex-col gap-5  bg-[#578DE3] text-white mt-4 mb-2 bg-gradient-to-r ">
+      <ion-text class="font-medium text-lg">Acertos por Disciplina</ion-text>
       <p-chart type="polarArea" [data]="data" [options]="options"/>
     </div>
 
 
-    <div class="flex flex-wrap gap-3 mt-4 [&>span]:shadow">
+    <div class="flex flex-wrap gap-3 mt-4">
 
-        <span class="flex flex-1 min-w-32 justify-between bg-white p-2 items-center rounded-lg">
+        <span class="flex flex-1 min-w-32 justify-between bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] text-white p-5 items-center rounded-lg">
           <span class="flex flex-col">
             <ion-text class="text-lg font-bold">0%</ion-text>
-            <ion-text class="text-sm">Taxa de acerto</ion-text>
+            <ion-text class="text-sm opacity-70">Taxa de acerto</ion-text>
           </span>
-            <i class="fa-solid fa-chart-line text-2xl text-green-600"></i>
+          <i class="fa-solid fa-arrow-trend-up text-2xl"></i>
         </span>
 
 
-        <span class="flex flex-1 min-w-32 justify-between bg-white p-2 items-center rounded-lg">
+        <span class="flex flex-1 min-w-32 justify-between bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] text-white p-5 items-center rounded-lg">
           <span class="flex flex-col">
             <ion-text class="text-lg font-bold">0</ion-text>
-            <ion-text class="text-sm">Questões no período</ion-text>
+            <ion-text class="text-sm opacity-70">Questões no período</ion-text>
           </span>
-            <i class="fa-solid fa-chart-line text-2xl text-green-600"></i>
+          <i class="fa-solid fa-arrow-trend-up text-2xl"></i>
         </span>
 
-        <span class="flex flex-1 min-w-32 justify-between bg-white p-2 items-center rounded-lg">
+        <span class="flex flex-1 min-w-32 justify-between bg-gradient-to-l  bg-[#47A34C] text-white p-5 items-center rounded-lg">
           <span class="flex flex-col">
             <ion-text class="text-lg font-bold">0</ion-text>
-            <ion-text class="text-sm">Certas</ion-text>
+            <ion-text class="text-sm opacity-70">Certas</ion-text>
           </span>
-          <i class="fa-solid fa-check text-2xl text-green-600"></i>
+          <i class="fa-solid fa-check text-2xl"></i>
         </span>
 
-        <span class="flex flex-1 min-w-32 justify-between bg-white p-2 items-center rounded-lg">
+        <span class="flex flex-1 min-w-32 justify-between bg-gradient-to-l  bg-[#c10808]  text-white p-5 items-center rounded-lg">
           <span class="flex flex-col">
             <ion-text class="text-lg font-bold">0</ion-text>
             <ion-text class="text-sm">Erradas</ion-text>
           </span>
-          <i class="fa-solid fa-xmark text-2xl text-red-600"></i>
+          <i class="fa-solid fa-xmark text-3xl"></i>
         </span>
 
-        <span class="flex flex-1 min-w-40  bg-white p-2 items-center rounded-lg">
-          <i class="fa-solid fa-chart-simple  text-2xl text-green-600"></i>
+        <span class="flex flex-1 min-w-40 p-4 px-5  bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] text-white items-center rounded-lg">
+          <i class="fa-solid fa-chart-simple  text-2xl "></i>
           <span class="flex flex-col ms-4">
             <ion-text class="text-lg font-bold">?</ion-text>
             <ion-text class="text-sm">Ranking Setembro</ion-text>
           </span>
         </span>
 
-        <span class="flex flex-1 min-w-40  bg-white p-2 items-center rounded-lg">
-          <i class="fa-solid fa-clock text-2xl text-green-600"></i>
+        <span class="flex flex-1 min-w-40  p-4 px-5  bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] text-white items-center rounded-lg">
+          <i class="fa-solid fa-clock text-3xl "></i>
           <span class="flex flex-col ms-4">
             <ion-text class="text-lg font-bold">0 min</ion-text>
-            <ion-text class="text-sm">Tempo médio / questão</ion-text>
+            <ion-text class="text-sm">Tempo médio/questão</ion-text>
           </span>
         </span>
 

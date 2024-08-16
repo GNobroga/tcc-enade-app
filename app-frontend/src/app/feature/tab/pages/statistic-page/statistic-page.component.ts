@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-statistic-page',
@@ -8,14 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatisticPageComponent  implements OnInit {
 
-  data: any;
+  data!: ChartData;
 
-  options: any;
+  options!: ChartOptions;
 
   ngOnInit() {
       const documentStyle = getComputedStyle(document.documentElement);
-      const textColor = documentStyle.getPropertyValue('--text-color');
-      const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
       this.data = {
           datasets: [
@@ -31,21 +30,21 @@ export class StatisticPageComponent  implements OnInit {
                   label: 'My dataset'
               }
           ],
-          labels: ['lógica', 'computação', 'software', 'segurança', 'infraestrutura']
+          labels: ['lógica', 'computação', 'software', 'segurança', 'infraestrutura'],
       };
 
       this.options = {
           plugins: {
               legend: {
                   labels: {
-                      color: textColor
+                      color: 'white'
                   }
               }
           },
           scales: {
               r: {
                   grid: {
-                      color: surfaceBorder
+                      color: 'white'
                   }
               }
           }
