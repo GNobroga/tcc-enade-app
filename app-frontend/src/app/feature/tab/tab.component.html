@@ -7,15 +7,17 @@
     </ion-tab-button>
 
 
+    <ion-tab-button tab="study" [ngClass]="{ 'tab-selected': selectedTab() === 'tests' }">
+      <ion-icon name="book"></ion-icon>
+      <ion-label>Estudar</ion-label>
+    </ion-tab-button>
+
+
     <ion-tab-button tab="ranking" [ngClass]="{ 'tab-selected': selectedTab() === 'ranking' }">
       <ion-icon icon="bar-chart-sharp"></ion-icon>
       <ion-label>Rank</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tests" [ngClass]="{ 'tab-selected': selectedTab() === 'tests' }">
-      <ion-icon name="book"></ion-icon>
-      <ion-label>Simulados</ion-label>
-    </ion-tab-button>
 
     <ion-tab-button tab="achievement" [ngClass]="{ 'tab-selected': selectedTab() === 'achievement' }">
       <ion-icon name="medal-sharp"></ion-icon>

@@ -8,6 +8,8 @@ import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
 import { StatisticPageComponent } from './pages/statistic-page/statistic-page.component';
 import { MyDataPageComponent } from './pages/my-data-page/my-data-page.component';
 import { StorePageComponent } from './pages/store-page/store-page.component';
+import { StudyPageComponent } from './pages/study-page/study-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,10 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomePageComponent,
+      },
+      {
+        path: 'study',
+        component: StudyPageComponent,
       },
       {
         path: 'achievement',
@@ -49,6 +55,10 @@ const routes: Routes = [
   {
     path: 'store',
     component: StorePageComponent,
+  },
+  {
+    path: 'search',
+    component: SearchPageComponent,
   }
 ];
 

@@ -1,0 +1,88 @@
+<ion-content>
+  <ion-toolbar color="primary" class="ion-no-border">
+    <ion-item color="primary" lines="none" class="pt-4">
+      <ion-text slot="start" class="text-3xl font-bold text-white">Estude</ion-text>
+      <ion-button class="search-button"  slot="end">
+        <ion-icon slot="icon-only" name="search" class="text-white text-3xl" routerLink="/tabs/search" matRipple></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+  <div class="bg-[var(--ion-color-primary)]">
+    <div matRipple class="mx-4 flex gap-4 rounded-lg cursor-pointer p-4  shadow-md bg-gradient-to-l to-[#8c8adb] from-[#6b41be] text-white relative top-8">
+      <ion-img src="assets/image/dice.png" class="w-16 h-16"></ion-img>
+      <div class="flex flex-col">
+        <ion-text class="text-xl font-semibold">Simulados</ion-text>
+        <ion-text class="text-sm">Pratique com perguntas variadas.</ion-text>
+      </div>
+    </div>
+  </div>
+  <div class="mt-12 p-4 flex [&_div]:flex-1 [&_div]:h-48 [&_div]:min-w-[40%] gap-3 flex-wrap">
+    <div class="flex rounded-lg flex-col cursor-pointer gap-2 py-4 px-2 shadow-md bg-gradient-to-l to-[#86cb88] from-[#57945a]" matRipple>
+        <span class="flex flex-grow-[2] justify-center">
+            <ion-img src="assets/image/computer.png" class="w-20 h-20 self-center"></ion-img>
+        </span>
+        <div >
+          <span class="flex justify-between items-center text-white mb-1">
+            <ion-text class="font-medium text-sm">Lógica</ion-text>
+            <ion-text class="opacity-90 text-thin text-sm">0/10</ion-text>
+          </span>
+          <ion-progress-bar/>
+        </div>
+    </div>
+
+    <div class="flex rounded-lg flex-col cursor-pointer gap-2 py-4 px-2 shadow-md bg-gradient-to-l to-[#b19bd8] from-[#7951C1]" matRipple>
+        <span class="flex flex-grow-[2] justify-center">
+            <ion-img src="assets/image/ciencia-da-computacao.png" class="w-20 h-20 self-center"></ion-img>
+        </span>
+        <div >
+          <span class="flex justify-between items-center text-white mb-1">
+            <ion-text class="font-medium text-sm">Computação</ion-text>
+            <ion-text class="opacity-90 text-thin text-sm">0/10</ion-text>
+          </span>
+          <ion-progress-bar/>
+        </div>
+    </div>
+
+    <div class="flex rounded-lg flex-col cursor-pointer gap-2 py-4 px-2 shadow-md bg-gradient-to-l to-[#90a0e5] from-[#3845a5]" matRipple>
+        <span class="flex flex-grow-[2] justify-center">
+            <ion-img src="assets/image/software-de-impressao-3d.png" class="w-20 h-20 self-center"></ion-img>
+        </span>
+        <div >
+          <span class="flex justify-between items-center text-white mb-1">
+            <ion-text class="font-medium text-sm">Software</ion-text>
+            <ion-text class="opacity-90 text-thin text-sm">0/10</ion-text>
+          </span>
+          <ion-progress-bar/>
+        </div>
+    </div>
+
+    <div class="flex rounded-lg flex-col cursor-pointer gap-2 py-4 px-2 shadow-md bg-gradient-to-l to-[#e7804d] from-[#d33f3f] " matRipple>
+        <span class="flex flex-grow-[2] justify-center">
+            <ion-img src="assets/image/rede.png" class="w-20 h-20 self-center"></ion-img>
+        </span>
+        <div >
+          <span class="flex justify-between items-center text-white mb-1">
+            <ion-text class="font-medium text-sm">Segurança</ion-text>
+            <ion-text class="opacity-90 text-thin text-sm">0/10</ion-text>
+          </span>
+          <ion-progress-bar/>
+        </div>
+    </div>
+
+
+    <div class="flex rounded-lg flex-col cursor-pointer gap-2 py-4 px-2 bg-gradient-to-l to-[#b5b3ad] from-[#5d5555]" matRipple>
+        <span class="flex flex-grow-[2] justify-center">
+            <ion-img src="assets/image/ciber-seguranca (3).png" class="w-20 h-20 self-center"></ion-img>
+        </span>
+        <div >
+          <span class="flex justify-between items-center text-white mb-1">
+            <ion-text class="font-medium text-sm">Infraestrutura</ion-text>
+            <ion-text class="opacity-90 text-thin text-sm">0/10</ion-text>
+          </span>
+          <ion-progress-bar/>
+        </div>
+    </div>
+
+
+  </div>
+</ion-content>

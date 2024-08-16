@@ -14,6 +14,8 @@ import { StorePageComponent } from './pages/store-page/store-page.component';
 import { WeekdayDisplayComponent } from './components/weekday-display/weekday-display.component';
 import { WeekdaySequenceDialogComponent } from './components/weekday-sequence-dialog/weekday-sequence-dialog.component';
 import { UpdateNameDialogComponent } from './components/update-name-dialog/update-name-dialog.component';
+import { StudyPageComponent } from './pages/study-page/study-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { UpdateNameDialogComponent } from './components/update-name-dialog/updat
     StorePageComponent,
     WeekdayDisplayComponent,
     WeekdaySequenceDialogComponent,
-    UpdateNameDialogComponent
+    UpdateNameDialogComponent,
+    StudyPageComponent,
+    SearchPageComponent
   ],
   imports: [
     SharedModule,
