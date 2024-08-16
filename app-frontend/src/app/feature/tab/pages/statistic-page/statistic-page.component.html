@@ -1,18 +1,19 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-back-button slot="start" defaultHref="/tabs/perfil"></ion-back-button>
+    <ion-back-button slot="start" defaultHref="/tabs"></ion-back-button>
   </ion-toolbar>
   <ion-toolbar color="primary">
-    <ion-item slot="start" color="primary">
+    <ion-item slot="start" color="primary" lines="none">
       <ion-avatar slot="start">
         <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
       </ion-avatar>
       <span class="flex flex-col text-white pb-2">
-        <ion-text class="font-medium">Olá, Gabriel</ion-text>
-        <ion-text class="text-sm">Como vai você?</ion-text>
+        <ion-text class="font-bold text-2xl">Olá, Gabriel</ion-text>
+        <ion-text class="text-sm font-thin">Vamos analisar o seu desempenho?</ion-text>
       </span>
     </ion-item>
   </ion-toolbar>
+  <div class="p-3 bg-[var(--ion-color-primary)]"></div>
 </ion-header>
 <ion-content>
   <div class="p-4">
