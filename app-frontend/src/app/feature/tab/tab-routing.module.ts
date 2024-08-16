@@ -34,10 +34,6 @@ const routes: Routes = [
         component: StudyPageComponent,
       },
       {
-        path: 'achievement',
-        component: AchievementPageComponent,
-      },
-      {
         path: 'ranking',
         component: RankingPageComponent,
       },
@@ -74,7 +70,11 @@ const routes: Routes = [
   {
     path: 'chat',
     component: ChatPageComponent,
-  }
+  },
+  {
+    path: 'achievement',
+    component: AchievementPageComponent,
+  },
 ];
 
 @NgModule({

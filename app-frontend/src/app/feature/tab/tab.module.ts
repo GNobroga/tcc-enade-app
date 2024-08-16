@@ -1,7 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MenuWrapperComponent } from './components/menu-wrapper/menu-wrapper.component';
 import { AchievementPageComponent } from './pages/achievement-page/achievement-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TabRoutingModule } from './tab-routing.module';
@@ -26,7 +25,6 @@ import { ChatMessageComponent } from './pages/components/chat-message/chat-messa
   declarations: [
     TabComponent,
     HomePageComponent,
-    MenuWrapperComponent,
     AchievementPageComponent,
     RankingPageComponent,
     PerfilPageComponent,
