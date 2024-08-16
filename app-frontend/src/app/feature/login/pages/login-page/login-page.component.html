@@ -1,4 +1,4 @@
-<app-login-form>
+<app-login-form #container>
   <div class="pb-4">
     <ion-item lines="none" class="form-group">
       <ion-input placeholder="E-mail"></ion-input>
@@ -13,7 +13,7 @@
       <ion-text color="primary" class="text-sm">Esqueci minha senha</ion-text>
     </div>
 
-    <ion-button color="tertiary" expand="block"  class="button-login-email text-lg normal-case mt-4" href="/tabs">
+    <ion-button color="tertiary" expand="block"  class="button-login-email text-lg normal-case mt-4" routerLink="/tabs">
       Entrar com E-mail
     </ion-button>
 

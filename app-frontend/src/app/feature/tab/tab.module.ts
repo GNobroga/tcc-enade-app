@@ -19,6 +19,7 @@ import { NotepadPageComponent } from './pages/notepad-page/notepad-page.componen
 import { CreateNotePageComponent } from './pages/notepad-page/create-note-page/create-note-page.component';
 import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 import { ChatMessageComponent } from './pages/components/chat-message/chat-message.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ChatMessageComponent } from './pages/components/chat-message/chat-messa
   ],
   imports: [
     SharedModule,
-    TabRoutingModule
+    TabRoutingModule,
+    CoreModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
