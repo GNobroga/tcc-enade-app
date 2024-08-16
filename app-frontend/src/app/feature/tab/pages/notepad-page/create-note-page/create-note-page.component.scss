@@ -1,0 +1,21 @@
+
+
+ion-content {
+  --background: #eee;
+}
+
+swiper-slide  {
+
+  ion-button {
+    --border-radius: 50%;
+  }
+}
+
+
+ion-input, ion-textarea {
+  --border-style: none;
+  --border-color: none;
+  --border-width: none;
+  --highlight-color-focused: black;
+  --highlight-height: 0;
+}

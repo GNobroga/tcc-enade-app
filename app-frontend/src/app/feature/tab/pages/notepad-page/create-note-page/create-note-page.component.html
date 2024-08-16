@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar [ngStyle]="{ '--background': headerColor() }">
+    <ion-item lines="none" [ngStyle]="{ '--background': headerColor() }">
+      <ion-back-button color="light" defaultHref="/tabs/notepad"></ion-back-button>
+      <ion-title color="light">Nova Nota</ion-title>
+      <ion-button href="/tabs/notepad" fill="clear" color="light">
+        <i slot="icon-only"  class="fa-solid fa-trash text-xl"></i>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+  <div class="p-2">
+    <swiper-container [slidesPerView]="7" [loop]="true" [speed]="300">
+      @for(color of colorButtons; track color) {
+        <swiper-slide>
+          <div>
+            <ion-button (click)="changeColor(color)" class="w-9 h-9" [ngStyle]="{ '--background': color }"></ion-button>
+          </div>
+        </swiper-slide>
+      }
+    </swiper-container>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="p-4 h-full">
+    <ion-input autofocus clearInput placeholder="Título" class="text-3xl font-medium opacity-80" autocapitalize="on"></ion-input>
+    <ion-textarea autocapitalize="on" autoGrow placeholder="Digite o conteúdo da sua nota aqui..."></ion-textarea>
+  </div>
+</ion-content>

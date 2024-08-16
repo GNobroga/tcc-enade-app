@@ -10,6 +10,8 @@ import { MyDataPageComponent } from './pages/my-data-page/my-data-page.component
 import { StorePageComponent } from './pages/store-page/store-page.component';
 import { StudyPageComponent } from './pages/study-page/study-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { NotepadPageComponent } from './pages/notepad-page/notepad-page.component';
+import { CreateNotePageComponent } from './pages/notepad-page/create-note-page/create-note-page.component';
 
 
 const routes: Routes = [
@@ -59,6 +61,14 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchPageComponent,
+  },
+  {
+    path: 'notepad',
+    component: NotepadPageComponent,
+  },
+  {
+    path: 'create-note',
+    component: CreateNotePageComponent,
   }
 ];
 
