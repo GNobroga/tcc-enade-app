@@ -8,25 +8,25 @@ import { Component, OnInit, signal } from '@angular/core';
 export class CreateNotePageComponent  implements OnInit {
 
   public headerColor = signal('black');
-
   public readonly colorButtons = [
-      'black',
-      'darkred',
-      'maroon',
-      'darkgreen',
-      'olive',
-      'navy',
-      'darkblue',
-      'indigo',
-      'darkslategray',
-      'teal',
-      'darkmagenta',
-      'chocolate',
-      'saddlebrown',
-      'midnightblue',
-      'darkviolet',
-      'darkorange'
+    'cadetblue',
+    'cornflowerblue',
+    'darkseagreen',
+    'mediumseagreen',
+    'mediumslateblue',
+    'rosybrown',
+    'lightcoral',
+    'darkkhaki',
+    'goldenrod',
+    'lightsteelblue',
+    'mediumpurple',
+    'darksalmon',
+    'peru',
+    'tan',
+    'indianred',
+    'lightseagreen'
   ];
+
 
   constructor() { }
 
