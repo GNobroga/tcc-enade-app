@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { register } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
+import { WeekdaySequenceDialogComponent } from '../../components/weekday-sequence-dialog/weekday-sequence-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -11,7 +13,14 @@ import { SwiperOptions } from 'swiper/types';
 export class HomePageComponent {
 
 
-  constructor() { }
+  constructor(
+    public readonly dialog: MatDialog
+  ) { }
+
+
+  public openWeekdaySequenceDialog() {
+    this.dialog.open(WeekdaySequenceDialogComponent);
+  }
 
 
 }
