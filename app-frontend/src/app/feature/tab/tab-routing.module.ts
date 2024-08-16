@@ -34,14 +34,14 @@ const routes: Routes = [
         component: StudyPageComponent,
       },
       {
-        path: 'ranking',
-        component: RankingPageComponent,
-      },
-      {
         path: 'perfil',
         component: PerfilPageComponent,
       },
     ],
+  },
+  {
+    path: 'ranking',
+    component: RankingPageComponent,
   },
   {
     path: 'statistic',
