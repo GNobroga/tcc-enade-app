@@ -2,7 +2,12 @@
 
   <ion-fab routerLink="/tabs/study" vertical="bottom" horizontal="center" class="scale-125 bottom-5">
     <ion-fab-button>
-      <ion-icon name="book" color="primary"></ion-icon>
+      @if(selectedTab() === 'study') {
+        <ion-icon name="book" color="primary"></ion-icon>
+      } @else {
+        <i class="fa-solid fa-book text-[var(--ion-color-primary)] text-xl"></i>
+      }
+
     </ion-fab-button>
   </ion-fab>
 
