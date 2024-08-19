@@ -12,6 +12,9 @@ ion-list {
     --padding-bottom: 0.5rem;
     --border-radius: 0.5rem;
     --background: #eeeeeea6;
+    --border-width: 1px;
+    --border-color: #33333352;
+    --border-style: solid;
     margin: 0.5rem 0;
 
     &:nth-child(2n + 1) {

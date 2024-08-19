@@ -1,16 +1,24 @@
 <ion-tabs (ionTabsDidChange)="onChange($event)">
 
-  <ion-tab-bar slot="bottom" class="rounded-tl-2xl rounded-tr-2xl" color="light">
+  <ion-fab routerLink="/tabs/study" vertical="bottom" horizontal="center" class="scale-125 bottom-5">
+    <ion-fab-button>
+      <ion-icon name="book" color="primary"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-tab-bar slot="bottom" class="rounded-tl-2xl rounded-tr-2xl">
     <ion-tab-button tab="home" [ngClass]="{ 'tab-selected': selectedTab() === 'home' }">
       <ion-icon icon="home"></ion-icon>
       <ion-label>Início</ion-label>
     </ion-tab-button>
 
 
-    <ion-tab-button tab="study" [ngClass]="{ 'tab-selected': selectedTab() === 'tests' }">
-      <ion-icon name="book"></ion-icon>
-      <ion-label>Estudar</ion-label>
+    <ion-tab-button routerLink="/tabs/chat" [ngClass]="{ 'tab-selected': selectedTab() === 'tests' }">
+      <ion-icon name="chatbubbles"></ion-icon>
+      <ion-label>Chat</ion-label>
     </ion-tab-button>
+
+    <ion-tab-button></ion-tab-button>
 
 
     <ion-tab-button routerLink="/tabs/ranking" [ngClass]="{ 'tab-selected': selectedTab() === 'ranking' }">
