@@ -32,23 +32,23 @@
         <app-weekday-display/>
       </div>
     </div>
-    <div class="flex border border-black border-opacity-5 items-center pb-5 gap-5 rounded-md p-4 bg-gradient-to-r  to-[#6865E6] from-[#8856E9] text-white mx-4  relative -top-3">
+    <div class="flex  items-center p-5 gap-5 rounded-md bg-gradient-to-l  to-[#6865E6] from-[#8856E9] text-white mx-4  relative -top-3">
       <div class="flex flex-col">
         <ion-text class="font-bold text-xl">Se torne melhor</ion-text>
         <ion-text class="text-sm mt-1">
           Teste suas habilidades agora e descubra o quão especial você pode ser. Vamos nessa?
         </ion-text>
-        <ion-button color="secondary" class="normal-case mt-4" routerLink="/tabs/study">
+        <ion-button class="button-explorer normal-case mt-4" routerLink="/tabs/study">
           <span class="text-white">Explorar</span>
         </ion-button>
       </div>
       <div>
-        <ion-img src="assets/image/target.png" class="w-16 h-16"></ion-img>
+        <ion-img src="assets/image/target.png" class="w-20 h-20"></ion-img>
       </div>
     </div>
   </div>
-  <div class="p-2 px-3 pb-4">
-    <div class="border border-black border-opacity-5 flex gap-3 py-4  px-3 rounded-md bg-gradient-to-l  from-[#FEB125] to-[#FB6822]">
+  <div class="pt-2 px-3 pb-4">
+    <div class=" flex gap-3 py-6  px-4 rounded-md bg-gradient-to-b  from-[#FEB125] to-[#FB6822]">
       <ion-img src="assets/image/dream.png" class="min-w-16 min-h-16"></ion-img>
       <div class="flex flex-col text-white">
         <ion-text class="font-bold text-lg">Se esforce!</ion-text>
@@ -58,10 +58,10 @@
     <div class="mt-4">
       <ion-text class="font-bold text-xl">Continue aprendendo</ion-text>
     </div>
-    <div class="border border-black border-opacity-5 flex flex-col rounded-md bg-gradient-to-r  from-[#62B766] to-[#47A34C] mt-3 cursor-pointer" matRipple>
+    <div class=" flex flex-col py-4 px-2 rounded-md bg-gradient-to-b  from-[#62B766] to-[#47A34C] mt-3 cursor-pointer" matRipple>
       <span class="flex justify-end">
-        <ion-label class="relative right-5 top-2">
-          <span class="bg-white text-black w-14 rounded-full flex justify-center items-center text-xs uppercase h-5 ">Fácil</span>
+        <ion-label class="relative right-1 top-0">
+          <span class="bg-white w-14 rounded-full flex justify-center items-center text-xs uppercase h-5 text-green-800 ">Fácil</span>
         </ion-label>
       </span>
       <div class="flex gap-5 px-2 pb-3">
@@ -73,23 +73,23 @@
       </div>
     </div>
     <div class="flex [&_div]:flex-1 gap-2 flex-wrap">
-      <div routerLink="/tabs/statistic" class="border border-black border-opacity-5 flex p-3 flex-col rounded-md bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] mt-3 cursor-pointer" matRipple>
+      <div routerLink="/tabs/statistic" class=" flex p-4 flex-col rounded-md bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] mt-3 cursor-pointer" matRipple>
         <ion-img src="assets/image/analytics.png" class="w-14 h-14"></ion-img>
-        <div class="flex flex-col text-white mt-3">
+        <div class="flex flex-col text-white">
           <ion-text class="font-bold text-lg">Estatísticas</ion-text>
           <ion-text class="text-sm">Acompanhe seu desempenho pontos fortes e fracos.</ion-text>
         </div>
       </div>
-      <div routerLink="/tabs/chat" class="border border-black border-opacity-5 flex p-3 flex-col rounded-md bg-gradient-to-l  from-[#89C644] to-[#0AB193] mt-3 cursor-pointer" matRipple>
+      <div routerLink="/tabs/chat" class=" flex p-4 flex-col rounded-md bg-gradient-to-l  from-[#89C644] to-[#0AB193] mt-3 cursor-pointer" matRipple>
         <ion-img src="assets/image/chat.png" class="w-14 h-14"></ion-img>
-        <div class="flex flex-col text-white mt-3">
+        <div class="flex flex-col text-white">
           <ion-text class="font-bold text-lg">Chat</ion-text>
           <ion-text class="text-sm">Comunique-se com os usuários da plataforma.</ion-text>
         </div>
       </div>
-      <div routerLink="/tabs/notepad" class="border border-black border-opacity-5 min-w-full pb-6 flex gap-3 p-3 items-center  rounded-md bg-gradient-to-l  from-[#3ECFB0] to-[#4ABBC1] mt-3 cursor-pointer" matRipple>
+      <div routerLink="/tabs/notepad" class=" min-w-full flex gap-3 py-7 px-5 items-center  rounded-md bg-gradient-to-l  from-[#3ECFB0] to-[#4ABBC1] mt-3 cursor-pointer" matRipple>
         <ion-img src="assets/image/notepad.png" class="w-14 h-14"></ion-img>
-        <div class="flex flex-col text-white mt-3">
+        <div class="flex flex-col text-white">
           <ion-text class="font-bold text-lg">Minhas notas</ion-text>
           <ion-text class="text-sm">Clique para ver detalhes.</ion-text>
         </div>
@@ -100,7 +100,7 @@
     </div>
     <swiper-container [slidesPerView]="1"  [spaceBetween]="10" [speed]="300">
       <swiper-slide>
-        <div class="bg-[#1B4C99] p-4 rounded-md cursor-pointer h-32 border border-black border-opacity-5" matRipple>
+        <div class="bg-[#1B4C99] p-4 rounded-md cursor-pointer h-32 " matRipple>
           <ion-label class="flex justify-end">
             <ion-img src="assets/image/star.png" class="w-6 h-6"></ion-img>
           </ion-label>
@@ -111,24 +111,13 @@
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="bg-[#5A2AD6] p-4 rounded-md cursor-pointer h-32 border border-black border-opacity-5" matRipple>
+        <div class="bg-[#5A2AD6] p-4 rounded-md cursor-pointer h-32 " matRipple>
           <ion-label class="flex justify-end">
             <ion-img src="assets/image/friendship.png" class="w-6 h-6"></ion-img>
           </ion-label>
           <div class="text-white flex flex-col">
             <ion-text class="text-lg font-bold">Convide seus amigos</ion-text>
             <ion-text class="text-sm">Compartilhe com alguém!</ion-text>
-          </div>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="bg-[#5A2AD6] p-4 rounded-md cursor-pointer h-32 border border-black border-opacity-5" matRipple>
-          <ion-label class="flex justify-end">
-            <ion-img src="assets/image/mail.png" class="w-6 h-6"></ion-img>
-          </ion-label>
-          <div class="text-white flex flex-col">
-            <ion-text class="text-lg font-bold">Entre em contato!</ion-text>
-            <ion-text class="text-sm">Encontrou algum erro ou tem alguma sugestão? Manda para mim!</ion-text>
           </div>
         </div>
       </swiper-slide>
