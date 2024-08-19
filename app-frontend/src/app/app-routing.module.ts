@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     loadChildren: () => import('./feature/welcome/welcome.module'),
+  },
+  {
+    path: 'quiz',
+    loadChildren: () => import('./feature/quiz/quiz.module'),
   }
 ];
 
