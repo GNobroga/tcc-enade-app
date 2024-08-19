@@ -6,8 +6,6 @@ import { AchievementPageComponent } from './pages/achievement-page/achievement-p
 import { RankingPageComponent } from './pages/ranking-page/ranking-page.component';
 import { PerfilPageComponent } from './pages/perfil-page/perfil-page.component';
 import { StatisticPageComponent } from './pages/statistic-page/statistic-page.component';
-import { MyDataPageComponent } from './pages/my-data-page/my-data-page.component';
-import { StorePageComponent } from './pages/store-page/store-page.component';
 import { StudyPageComponent } from './pages/study-page/study-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { NotepadPageComponent } from './pages/notepad-page/notepad-page.component';
@@ -46,14 +44,6 @@ const routes: Routes = [
   {
     path: 'statistic',
     component: StatisticPageComponent,
-  },
-  {
-    path: 'my-data',
-    component: MyDataPageComponent,
-  },
-  {
-    path: 'store',
-    component: StorePageComponent,
   },
   {
     path: 'search',
