@@ -3,3 +3,11 @@ ion-back-button {
   --background-activated: transparent;
   --background-hover: transparent;
 }
+
+ion-toolbar {
+  --background: transparent;
+}
+
+ion-content {
+  --background: url('../../../assets/image/background.png');
+}

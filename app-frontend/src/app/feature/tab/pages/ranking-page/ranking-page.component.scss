@@ -11,9 +11,11 @@ ion-list {
     --padding-top: 0.5rem;
     --padding-bottom: 0.5rem;
     --border-radius: 0.5rem;
+    --background: #eeeeeea6;
+    margin: 0.5rem 0;
 
     &:nth-child(2n + 1) {
-      --background: #eee;
+      --background: #78c1e037;
     }
   }
 }
