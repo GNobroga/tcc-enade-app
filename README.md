@@ -1,6 +1,6 @@
 # Aplicativo ENADE
 
-## Telas (OLD)
+## Telas 
 
 ![alt text](/docs/image.png)
 
