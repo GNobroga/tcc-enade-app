@@ -1,0 +1,22 @@
+ion-searchbar {
+  --border-radius: 0.5rem;
+  --background: #fff;
+  --box-shadow: none;
+}
+
+ion-menu {
+  --min-width: 100svw;
+}
+
+ion-list {
+  ion-item {
+    --background: white;
+  }
+}
+
+
+.friends {
+  ion-item:nth-child(2n + 1) {
+    --background: #eeeeeec3;
+  }
+}

@@ -1,0 +1,40 @@
+<ion-tabs (ionTabsDidChange)="onChange($event)">
+
+  <ion-fab routerLink="/tabs/study" vertical="bottom" horizontal="center" class="scale-125 bottom-5">
+    <ion-fab-button>
+      @if(selectedTab() === 'study') {
+        <ion-icon name="book" color="primary"></ion-icon>
+      } @else {
+        <i class="fa-solid fa-book text-[var(--ion-color-primary)] text-xl"></i>
+      }
+
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-tab-bar slot="bottom" class="rounded-tl-2xl rounded-tr-2xl">
+    <ion-tab-button tab="home" [ngClass]="{ 'tab-selected': selectedTab() === 'home' }">
+      <ion-icon icon="home"></ion-icon>
+      <ion-label>Início</ion-label>
+    </ion-tab-button>
+
+
+    <ion-tab-button routerLink="/tabs/community" [ngClass]="{ 'tab-selected': selectedTab() === 'community' }">
+      <ion-icon name="people"></ion-icon>
+      <ion-label>Amigos</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button></ion-tab-button>
+
+
+    <ion-tab-button routerLink="/tabs/ranking" [ngClass]="{ 'tab-selected': selectedTab() === 'ranking' }">
+      <ion-icon icon="bar-chart-sharp"></ion-icon>
+      <ion-label>Rank</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="perfil" [ngClass]="{ 'tab-selected': selectedTab() === 'perfil' }">
+      <ion-icon icon="person"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
