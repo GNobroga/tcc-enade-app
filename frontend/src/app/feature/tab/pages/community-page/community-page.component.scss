@@ -11,8 +11,8 @@ ion-menu {
 ion-list {
   ion-item {
     --background: white;
-    --padding-top: 0.5rem;
-    --padding-bottom: 0.5rem;
+    --padding-top: 0.2rem;
+    --padding-bottom: 0.2rem;
   }
 }
 
@@ -20,8 +20,8 @@ ion-list {
 .friends {
 
   ion-item {
-    --padding-top: 0.5rem;
-    --padding-bottom: 0.5rem;
+    --padding-top: 0.2rem;
+    --padding-bottom: 0.2rem;
   }
 
   ion-item:nth-child(2n + 1) {

@@ -1,6 +1,7 @@
 import { Component, effect, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { interval, scan, Subscription, switchMap, tap } from 'rxjs';
 import { Question, QuizQuestionComponent } from '../../components/quiz-question/quiz-question.component';
+import { Router } from '@angular/router';
 
 
 const questions: Question[] = [
@@ -131,22 +132,26 @@ de problemas na execução das tarefas.
 })
 export class QuizStartedComponent implements OnInit, OnDestroy {
 
-  timer = signal([0, 0, 0]); // hours, minutes and seconds
+    timer = signal([0, 0, 0]); // hours, minutes and seconds
 
-  questions = questions;
+    questions = questions;
 
-  @ViewChild(QuizQuestionComponent)
-  quizQuestionComponent!: QuizQuestionComponent;
+    @ViewChild(QuizQuestionComponent)
+    quizQuestionComponent!: QuizQuestionComponent;
 
-  currentQuestion = signal<Question | null>(null);
+    currentQuestion = signal<Question | null>(null);
 
-  currentQuestionIndex = signal<number | null>(null);
+    currentQuestionIndex = signal<number | null>(null);
 
-  checkIfIsCorrect = signal(false);
+    correctQuestionsId = signal<number[]>([]);
 
-  disableButton = signal(false);
+    checkIfIsCorrect = signal(false);
 
-  subscription = new Subscription();
+    disableButton = signal(false);
+
+    subscription = new Subscription();
+
+    constructor(readonly router: Router) {}
 
     ngOnInit() {
         if (this.questions.length > 0) {
@@ -159,18 +164,18 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
             scan(seconds => (seconds >= 59 ? 0 : seconds + 1), 0),
             tap(seconds => {
                 this.timer.update(oldTimer => {
-                let [hours, minutes] = oldTimer;
+                    let [hours, minutes] = oldTimer;
 
-                if (seconds >= 59) {
-                    minutes += 1;
-                }
+                    if (seconds >= 59) {
+                        minutes += 1;
+                    }
 
-                if (minutes >= 59) {
-                    hours += 1;
-                    minutes = 0;
-                }
+                    if (minutes >= 59) {
+                        hours += 1;
+                        minutes = 0;
+                    }
 
-                return [hours, minutes, seconds];
+                    return [hours, minutes, seconds];
                 });
             })
         ).subscribe();
@@ -191,13 +196,26 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
    goToNext() {
         if (this.currentQuestionIndex() === null) return;
         const currentQuestionIndex = this.currentQuestionIndex()! + 1;
+
+
+        if (this.quizQuestionComponent.isCorrect()) {
+          this.correctQuestionsId.update(oldCorrectQuestionsId => [...oldCorrectQuestionsId, this.currentQuestion()!.id]);
+        }
+
+        this.quizQuestionComponent.selectedAlternativeId.set(null);
+        
         if (currentQuestionIndex < this.questions.length) {
             this.checkIfIsCorrect.set(false);
             this.currentQuestion.set(this.questions[currentQuestionIndex]);
             this.currentQuestionIndex.set(currentQuestionIndex);
-            this.quizQuestionComponent.selectedAlternativeId.set(null);
         } else {
-            window.alert('Não há mais questões no momento!');
+           this.router.navigate(['/quiz/result'], {
+                state: {
+                    correctQuestionsId: this.correctQuestionsId(),
+                    questions: this.questions,
+                    timer: this.timer(),
+                }
+           });
         }
    }
 

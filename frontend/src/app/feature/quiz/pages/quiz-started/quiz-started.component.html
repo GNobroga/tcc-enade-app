@@ -14,7 +14,9 @@
   <section>
 
     @if (currentQuestion(); as question) {
+     <div class="mt-3">
       <app-quiz-question [data]="question"/>
+     </div>
     }
 
     <ion-button expand="block" class="mt-5 !h-12 normal-case" (click)="!checkIfIsCorrect() ? toRespond() : goToNext()" [disabled]="disableButton()">

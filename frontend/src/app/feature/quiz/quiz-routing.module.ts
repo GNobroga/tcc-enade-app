@@ -4,6 +4,7 @@ import { QuizSelectionComponent } from "./pages/quiz-selection/quiz-selection.co
 import { QuizCustomSelectionComponent } from "./pages/quiz-custom-selection/quiz-custom-selection.component";
 import { QuizHistoryComponent } from "./pages/quiz-history/quiz-history.component";
 import { QuizStartedComponent } from "./pages/quiz-started/quiz-started.component";
+import { QuizResultComponent } from "./pages/quiz-result/quiz-result.component";
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'started',
     component: QuizStartedComponent,
+  },
+  {
+    path: 'result',
+    component: QuizResultComponent,
   }
 ];
 

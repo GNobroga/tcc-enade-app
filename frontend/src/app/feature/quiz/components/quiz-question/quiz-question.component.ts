@@ -59,17 +59,17 @@ export class QuizQuestionComponent implements OnInit {
   }
 
   getAlternativeStatusClass(alternativeId: number) {
-    const isSelected = this.selectedAlternativeId() === alternativeId;
     if (!this.parent.checkIfIsCorrect()) {
       return {
-        selected: isSelected,
-      }
+        selected: this.selectedAlternativeId() === alternativeId,
+      };
     }
 
-    return {
-      correct: isSelected && this.isCorrect(),
-      wrong: isSelected && !this.isCorrect(),
+    if (this.data.correctId === alternativeId) {
+      return { correct: true };
     }
+
+    return { wrong: true };
   }
 
   getQuestionStatusClass() {

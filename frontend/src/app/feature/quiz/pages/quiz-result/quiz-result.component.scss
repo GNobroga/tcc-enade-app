@@ -1,0 +1,53 @@
+
+
+ion-progress-bar {
+  background-color: #eee;
+  height: 0.7rem;
+  border-radius: 0.5rem;
+  &::part(track) {
+    background-color:  #ddd;
+  }
+}
+
+.result-progress {
+  height:2rem;
+
+  &::part(progress) {
+    background-color: #2b8c57;
+  }
+
+  &::part(track) {
+    background-color:  rgb(189, 204, 213);
+  }
+}
+
+ion-button {
+  --background: #1A7ECC;
+  --border-radius: 0.5rem !important;
+}
+
+
+
+ion-header {
+
+  ion-toolbar, ion-item {
+    --background: #eee;
+  }
+
+  & > div {
+    background-color: #eee;
+  }
+}
+
+ion-content {
+  --background: #eee;
+}
+
+.correct {
+  @apply bg-[#34A265];
+}
+
+
+.wrong {
+  @apply bg-[#FE5F5C];
+}

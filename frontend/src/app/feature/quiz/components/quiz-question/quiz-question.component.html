@@ -22,9 +22,9 @@
     </div>
   </div>
 
-  <div class="question__footer [&>div]:bg-white  [&>div]:cursor-pointer rounded-bl-lg rounded-br-lg">
+  <div class="question__footer [&>div]:bg-white  [&>div]:cursor-pointer  py-2 {{ parent.checkIfIsCorrect() ? 'wrong' : ''}}">
     @for (alternative of data.alternatives; track alternative.id; let index = $index) {
-      <div class="p-4 rounded-lg text-justify items-center flex gap-3" matRipple (click)="parent.checkIfIsCorrect() ? null : markAnswer(alternative.id)" [ngClass]="getAlternativeStatusClass(alternative.id)">
+      <div class="p-4 text-justify items-center flex gap-3" matRipple (click)="parent.checkIfIsCorrect() ? null : markAnswer(alternative.id)" [ngClass]="getAlternativeStatusClass(alternative.id)">
         <div class="bg-black w-full relative  h-full max-w-6 max-h-6 rounded-full text-white flex items-center justify-center">
           <strong>{{ getOrder(index) }}</strong>
         </div>
