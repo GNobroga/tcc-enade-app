@@ -77,9 +77,10 @@ export class QuizQuestionComponent implements OnInit {
       return {}; // retornar nenhum estilo
     }
 
+    const isCorrect = this.isCorrect() || this.parent.correctQuestionsId().includes(this.data.id);
     return {
-      'is-correct': this.isCorrect(),
-      'is-wrong': !this.isCorrect(),
+      'is-wrong': !isCorrect,
+      'is-correct': isCorrect,
     };
   }
 }

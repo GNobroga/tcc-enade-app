@@ -221,7 +221,7 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
         this.currentPercentage.update(oldPercentage => oldPercentage + (currentQuestionIndex / this.questions.length));
 
         if (this.quizQuestionComponent.isCorrect()) {
-          this.correctQuestionsId.update(oldCorrectQuestionsId => [...oldCorrectQuestionsId, this.currentQuestion()!.id]);
+          this.correctQuestionsId.set(this.correctQuestionsId().concat(this.currentQuestion()!.id));
         }
 
         this.quizQuestionComponent.selectedAlternativeId.set(null);

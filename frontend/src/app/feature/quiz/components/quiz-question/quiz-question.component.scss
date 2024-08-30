@@ -19,11 +19,11 @@
   @apply border-[.1rem] border-white bg-white rounded-lg;
 
   &.is-correct {
-    @apply border-[#4F9E5C];
+    @apply border-[#4F9E5C] border-[.2rem];
   }
 
   &.is-wrong {
-    @apply border-[#FF4948];
+    @apply border-[#FF4948] border-[.2rem];
   }
 
   &__header {
