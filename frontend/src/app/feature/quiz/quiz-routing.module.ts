@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { QuizSelectionComponent } from "./pages/quiz-selection/quiz-selection.component";
 import { QuizCustomSelectionComponent } from "./pages/quiz-custom-selection/quiz-custom-selection.component";
 import { QuizHistoryComponent } from "./pages/quiz-history/quiz-history.component";
+import { QuizStartedComponent } from "./pages/quiz-started/quiz-started.component";
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'history',
     component: QuizHistoryComponent,
+  },
+  {
+    path: 'started',
+    component: QuizStartedComponent,
   }
 ];
 

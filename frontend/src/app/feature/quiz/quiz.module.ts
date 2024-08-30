@@ -5,13 +5,17 @@ import { QuizSelectionComponent } from './pages/quiz-selection/quiz-selection.co
 import { SharedModule } from 'src/app/shared/shared.module';
 import { QuizCustomSelectionComponent } from './pages/quiz-custom-selection/quiz-custom-selection.component';
 import { QuizHistoryComponent } from './pages/quiz-history/quiz-history.component';
+import { QuizStartedComponent } from './pages/quiz-started/quiz-started.component';
+import { QuizQuestionComponent } from './components/quiz-question/quiz-question.component';
 
 
 @NgModule({
   declarations: [
     QuizSelectionComponent,
     QuizCustomSelectionComponent,
-    QuizHistoryComponent
+    QuizHistoryComponent,
+    QuizStartedComponent,
+    QuizQuestionComponent,
   ],
   imports: [
     CommonModule,

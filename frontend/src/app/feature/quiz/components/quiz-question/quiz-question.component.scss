@@ -1,0 +1,52 @@
+.label {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px 0 10px 0;
+  left: -0.2rem;
+  top: -0.2rem;
+}
+
+
+.question {
+  @apply border-[.1rem] border-white bg-white rounded-lg;
+
+  &.is-correct {
+    @apply border-[#4F9E5C];
+  }
+
+  &.is-wrong {
+    @apply border-[#FF4948];
+  }
+
+  &__header {
+    @apply relative p-3 flex items-center justify-center bg-[#B2C7F4] rounded-tl-lg rounded-lg;
+  }
+
+  &__content {
+    @apply bg-[#DAE6FF] p-5  text-justify rounded-bl-2xl rounded-lg mx-1;
+  }
+}
+
+
+.correct {
+  background-color: #4F9E5C !important;
+  color: white;
+}
+
+.wrong {
+  background-color: #FF4948 !important;
+  color: white;
+}
+
+.selected {
+  background-color: #1A7ECC;
+  color: white;
+}

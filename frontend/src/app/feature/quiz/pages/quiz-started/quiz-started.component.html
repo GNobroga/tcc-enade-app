@@ -1,0 +1,24 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-item lines="none" slot="start" class="w-full">
+      <ion-back-button></ion-back-button>
+      <ion-title class="font-semibold">Enade 2021</ion-title>
+      <ion-text slot="end" class="text-lg">{{ timerFormatted }}</ion-text>
+    </ion-item>
+  </ion-toolbar>
+  <div class="px-5 ">
+    <ion-progress-bar value="0.1"  slot="start"></ion-progress-bar>
+  </div>
+</ion-header>
+<ion-content class="ion-padding">
+  <section>
+
+    @if (currentQuestion(); as question) {
+      <app-quiz-question [data]="question"/>
+    }
+
+    <ion-button expand="block" class="mt-5 !h-12 normal-case" (click)="!checkIfIsCorrect() ? toRespond() : goToNext()" [disabled]="disableButton()">
+      <span class="text-white font-medium text-lg">{{ checkIfIsCorrect() ? 'Próximo' : 'Responder' }}</span>
+    </ion-button>
+  </section>
+</ion-content>

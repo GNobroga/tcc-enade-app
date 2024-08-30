@@ -1,0 +1,23 @@
+ion-toolbar, ion-content, ion-item {
+  --background: #eee;
+}
+
+ion-header {
+  & > div {
+    background-color: #eee;
+  }
+}
+ion-progress-bar {
+  background-color: #eee;
+  height: 0.7rem;
+  border-radius: 0.5rem;
+  &::part(track) {
+    background-color:  #ddd;
+  }
+}
+
+
+ion-button {
+  --background: #1A7ECC;
+  --border-radius: 0.5rem !important;
+}

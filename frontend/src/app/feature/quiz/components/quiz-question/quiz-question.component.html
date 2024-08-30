@@ -1,0 +1,37 @@
+<div class="question shadow-lg rounded-bl-lg rounded-br-lg" [ngClass]="getQuestionStatusClass()">
+  <div class="question__header">
+    <span class="label">1</span>
+    <ion-text class="text-lg font-medium">{{ data.title }}</ion-text>
+  </div>
+  <div class="question__content space-y-5">
+    <p class="leading-loose tracking-tight text-base">
+      {{ data.content }}
+    </p>
+    <div>
+      <p class="leading-loose tracking-tight font-medium text-base">
+        {{ data.asking.title }}
+      </p>
+      @if (data.asking.body; as body) {
+        <div class="ms-3 opacity-85">
+          @for (askingContent of body; track askingContent) {
+            <p>{{ askingContent }}</p>
+          }
+        </div>
+      }
+      <p class="font-medium">{{ data.asking.footer  }}</p>
+    </div>
+  </div>
+
+  <div class="question__footer [&>div]:bg-white  [&>div]:cursor-pointer rounded-bl-lg rounded-br-lg">
+    @for (alternative of data.alternatives; track alternative.id; let index = $index) {
+      <div class="p-4 rounded-lg text-justify items-center flex gap-3" matRipple (click)="parent.checkIfIsCorrect() ? null : markAnswer(alternative.id)" [ngClass]="getAlternativeStatusClass(alternative.id)">
+        <div class="bg-black w-full relative  h-full max-w-6 max-h-6 rounded-full text-white flex items-center justify-center">
+          <strong>{{ getOrder(index) }}</strong>
+        </div>
+        <span class="text-base">
+         {{ alternative.label }}
+        </span>
+      </div>
+    }
+  </div>
+</div>

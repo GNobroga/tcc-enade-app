@@ -11,11 +11,19 @@ ion-menu {
 ion-list {
   ion-item {
     --background: white;
+    --padding-top: 0.5rem;
+    --padding-bottom: 0.5rem;
   }
 }
 
 
 .friends {
+
+  ion-item {
+    --padding-top: 0.5rem;
+    --padding-bottom: 0.5rem;
+  }
+
   ion-item:nth-child(2n + 1) {
     --background: #eeeeeec3;
   }
