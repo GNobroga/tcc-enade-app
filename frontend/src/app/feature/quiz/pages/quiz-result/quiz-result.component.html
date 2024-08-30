@@ -52,7 +52,12 @@
       <span class="normal-case text-white text-lg">Ver Gabarito</span>
     </ion-button>
   </div>
-  <ion-button expand="block" class="mt-5 !h-12">
+  <ion-button expand="block" class="mt-5 !h-12" (click)="restart()">
     <span class="normal-case text-white text-lg">Reiniciar Simulado</span>
   </ion-button>
+  <ion-fab horizontal="end" vertical="center" color="tertiary" (click)="goToStudyPage()">
+    <ion-fab-button>
+      <ion-icon color="light" name="book"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

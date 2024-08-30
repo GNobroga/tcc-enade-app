@@ -12,10 +12,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ChartModule } from 'primeng/chart';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
+import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
 
 @NgModule({
-  declarations: [],
-  imports: [],
+  declarations: [
+    LoadingPageComponent
+  ],
+  imports: [
+    IonicModule
+  ],
   exports: [
     CommonModule,
     IonicModule,
@@ -30,7 +35,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     ChartModule,
     MatBadgeModule,
-    MatMenuModule
+    MatMenuModule,
+    LoadingPageComponent
   ],
 })
 export class SharedModule {}

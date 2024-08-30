@@ -1,4 +1,4 @@
-import { Component, effect, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, effect, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { interval, scan, Subscription, switchMap, tap } from 'rxjs';
 import { Question, QuizQuestionComponent } from '../../components/quiz-question/quiz-question.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -145,13 +145,11 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
 
     correctQuestionsId = signal<number[]>([]);
 
-    checkIfIsCorrect = signal(false);
-
     currentPercentage = signal(0);
 
     disableButton = signal(false);
 
-    justSee = signal(false);
+    isJustSee = signal(false);
 
     subscription = new Subscription();
 
@@ -160,17 +158,15 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
     constructor(readonly router: Router, readonly route: ActivatedRoute) {}
 
     ngOnInit() {
-
         this.subscription.add(this.route.queryParams.subscribe(params => {
-          const justSee = params['just_see'] == 'true';
-          this.justSee.set(justSee);
-          if (justSee) {
-            this.timerSubscription.unsubscribe();
-            const timer = this.router.getCurrentNavigation()?.extras.state?.['timer'] ?? [0, 0, 0];
-            this.timer.set(timer);
-            this.currentQuestion.set(this.questions[0]);
-            this.currentQuestionIndex.set(0);
-          }
+          const justSee = params['just_see'] === 'true';
+          this.isJustSee.set(justSee);
+          if (!justSee) return;
+          this.timerSubscription.unsubscribe();
+          const timer = this.router.getCurrentNavigation()?.extras.state?.['timer'] ?? [0, 0, 0];
+          this.timer.set(timer);
+          this.currentQuestion.set(this.questions[0]);
+          this.currentQuestionIndex.set(0);
         }));
 
 
@@ -211,10 +207,6 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
         return `${hoursString}${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
    }
 
-   toRespond() {
-        this.checkIfIsCorrect.set(true);
-   }
-
    goToNext() {
         if (this.currentQuestionIndex() === null) return;
         const currentQuestionIndex = this.currentQuestionIndex()! + 1;
@@ -227,10 +219,9 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
         this.quizQuestionComponent.selectedAlternativeId.set(null);
 
         if (currentQuestionIndex < this.questions.length) {
-            this.checkIfIsCorrect.set(false);
             this.currentQuestion.set(this.questions[currentQuestionIndex]);
             this.currentQuestionIndex.set(currentQuestionIndex);
-
+            this.disableButton.set(true);
         } else {
            this.router.navigate(['/quiz/result'], {
                 state: {

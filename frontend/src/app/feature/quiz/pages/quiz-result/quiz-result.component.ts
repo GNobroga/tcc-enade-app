@@ -66,8 +66,17 @@ export class QuizResultComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   isCorrectQuestion(id: number) {
-    console.log(this.correctQuestionsId())
     return this.correctQuestionsId().includes(id);
+  }
+
+  async restart() {
+    await this.router.navigate(['/quiz/started']);
+    window.location.reload();
+  }
+
+  async goToStudyPage() {
+    await this.router.navigate(['/tabs/study']);
+    window?.location.reload();
   }
 
   ngOnDestroy(): void {

@@ -59,28 +59,29 @@ export class QuizQuestionComponent implements OnInit {
   }
 
   getAlternativeStatusClass(alternativeId: number) {
-    if (!this.parent.checkIfIsCorrect()) {
-      return {
-        selected: this.selectedAlternativeId() === alternativeId,
-      };
+    if (this.parent.isJustSee()) {
+      if (this.data.correctId === alternativeId) {
+        return { correct: true };
+      }
+
+      return { wrong: true };
     }
 
-    if (this.data.correctId === alternativeId) {
-      return { correct: true };
-    }
-
-    return { wrong: true };
+    return {
+      selected: this.selectedAlternativeId() === alternativeId,
+    };
   }
 
-  getQuestionStatusClass() {
-    if (!this.parent.checkIfIsCorrect()) {
-      return {}; // retornar nenhum estilo
-    }
+  get correct() {
+    return this.parent.correctQuestionsId().includes(this.data.correctId);
+  }
 
-    const isCorrect = this.isCorrect() || this.parent.correctQuestionsId().includes(this.data.id);
+
+  getQuestionStatusClass() {
+    if (!this.parent.isJustSee()) return {};
     return {
-      'is-wrong': !isCorrect,
-      'is-correct': isCorrect,
+      'is-wrong': !this.correct,
+      'is-correct': this.correct,
     };
   }
 }

@@ -19,27 +19,21 @@
      </div>
     }
 
-    @if (justSee()) {
-     <div class="flex justify-between">
+    @if (isJustSee()) {
+     <div class="flex gap-3 justify-between">
         @if (currentQuestionIndex()! > 0) {
-          <ion-button class="mt-5 !h-12 normal-case" (click)="seePreviousQuestion()">
-            <ion-icon name="arrow-back" color="light"></ion-icon>
+          <ion-button class="mt-5 flex-1 !h-12 normal-case" (click)="seePreviousQuestion()">
+            <span class="text-white font-medium text-lg">Anterior</span>
           </ion-button>
         }
-        <ion-button class="mt-5 !h-12 normal-case {{ currentQuestionIndex()! > 0 ? '' : 'w-full' }}" (click)="seeNextQuestion()">
-          @if (currentQuestionIndex()! > 0) {
-            <ion-icon name="arrow-forward" color="light"></ion-icon>
-          } @else {
-            <span class="text-white font-medium text-lg">Próximo</span>
-          }
+        <ion-button class="mt-5 flex-1 !h-12 normal-case {{ currentQuestionIndex()! > 0 ? '' : 'w-full' }}" (click)="seeNextQuestion()">
+          <span class="text-white font-medium text-lg">Próximo</span>
         </ion-button>
      </div>
     } @else {
-      <ion-button  expand="block" class="mt-5 !h-12 normal-case" (click)="!checkIfIsCorrect() ? toRespond() : goToNext()" [disabled]="disableButton()">
-        <span class="text-white font-medium text-lg">{{ checkIfIsCorrect() ? 'Próximo' : 'Responder' }}</span>
+      <ion-button  expand="block" class="mt-5 !h-12 normal-case" (click)="goToNext()" [disabled]="disableButton()">
+        <span class="text-white font-medium text-lg">{{ disableButton() ? 'Bloqueado' : 'Próximo' }}</span>
       </ion-button>
     }
-
-
   </section>
 </ion-content>
