@@ -7,7 +7,7 @@
     </ion-item>
   </ion-toolbar>
   <div class="px-5 ">
-    <ion-progress-bar value="0.1"  slot="start"></ion-progress-bar>
+    <ion-progress-bar [value]="currentPercentage()"  slot="start"></ion-progress-bar>
   </div>
 </ion-header>
 <ion-content class="ion-padding">
@@ -19,8 +19,27 @@
      </div>
     }
 
-    <ion-button expand="block" class="mt-5 !h-12 normal-case" (click)="!checkIfIsCorrect() ? toRespond() : goToNext()" [disabled]="disableButton()">
-      <span class="text-white font-medium text-lg">{{ checkIfIsCorrect() ? 'Próximo' : 'Responder' }}</span>
-    </ion-button>
+    @if (justSee()) {
+     <div class="flex justify-between">
+        @if (currentQuestionIndex()! > 0) {
+          <ion-button class="mt-5 !h-12 normal-case" (click)="seePreviousQuestion()">
+            <ion-icon name="arrow-back" color="light"></ion-icon>
+          </ion-button>
+        }
+        <ion-button class="mt-5 !h-12 normal-case {{ currentQuestionIndex()! > 0 ? '' : 'w-full' }}" (click)="seeNextQuestion()">
+          @if (currentQuestionIndex()! > 0) {
+            <ion-icon name="arrow-forward" color="light"></ion-icon>
+          } @else {
+            <span class="text-white font-medium text-lg">Próximo</span>
+          }
+        </ion-button>
+     </div>
+    } @else {
+      <ion-button  expand="block" class="mt-5 !h-12 normal-case" (click)="!checkIfIsCorrect() ? toRespond() : goToNext()" [disabled]="disableButton()">
+        <span class="text-white font-medium text-lg">{{ checkIfIsCorrect() ? 'Próximo' : 'Responder' }}</span>
+      </ion-button>
+    }
+
+
   </section>
 </ion-content>

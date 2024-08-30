@@ -54,6 +54,17 @@ export class QuizResultComponent implements OnInit, AfterViewInit, OnDestroy {
     return (this.correctQuestionsId().length / this.questions().length);
   }
 
+  justSeeQuestions() {
+    this.router.navigate(['/quiz/started'], {
+      queryParams: {
+        just_see: true
+      },
+      state: {
+        timer: this.timer(),
+      },
+    });
+  }
+
   isCorrectQuestion(id: number) {
     console.log(this.correctQuestionsId())
     return this.correctQuestionsId().includes(id);

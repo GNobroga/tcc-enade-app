@@ -1,7 +1,7 @@
 import { Component, effect, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { interval, scan, Subscription, switchMap, tap } from 'rxjs';
 import { Question, QuizQuestionComponent } from '../../components/quiz-question/quiz-question.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 const questions: Question[] = [
@@ -147,16 +147,36 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
 
     checkIfIsCorrect = signal(false);
 
+    currentPercentage = signal(0);
+
     disableButton = signal(false);
+
+    justSee = signal(false);
 
     subscription = new Subscription();
 
-    constructor(readonly router: Router) {}
+    timerSubscription = new Subscription();
+
+    constructor(readonly router: Router, readonly route: ActivatedRoute) {}
 
     ngOnInit() {
-        if (this.questions.length > 0) {
+
+        this.subscription.add(this.route.queryParams.subscribe(params => {
+          const justSee = params['just_see'] == 'true';
+          this.justSee.set(justSee);
+          if (justSee) {
+            this.timerSubscription.unsubscribe();
+            const timer = this.router.getCurrentNavigation()?.extras.state?.['timer'] ?? [0, 0, 0];
+            this.timer.set(timer);
             this.currentQuestion.set(this.questions[0]);
             this.currentQuestionIndex.set(0);
+          }
+        }));
+
+
+        if (this.questions.length > 0) {
+          this.currentQuestion.set(this.questions[0]);
+          this.currentQuestionIndex.set(0);
         }
 
         const subscription = interval(1000)
@@ -180,6 +200,8 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
             })
         ).subscribe();
 
+        this.timerSubscription.add(subscription);
+
         subscription.add(subscription);
     }
 
@@ -196,18 +218,19 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
    goToNext() {
         if (this.currentQuestionIndex() === null) return;
         const currentQuestionIndex = this.currentQuestionIndex()! + 1;
-
+        this.currentPercentage.update(oldPercentage => oldPercentage + (currentQuestionIndex / this.questions.length));
 
         if (this.quizQuestionComponent.isCorrect()) {
           this.correctQuestionsId.update(oldCorrectQuestionsId => [...oldCorrectQuestionsId, this.currentQuestion()!.id]);
         }
 
         this.quizQuestionComponent.selectedAlternativeId.set(null);
-        
+
         if (currentQuestionIndex < this.questions.length) {
             this.checkIfIsCorrect.set(false);
             this.currentQuestion.set(this.questions[currentQuestionIndex]);
             this.currentQuestionIndex.set(currentQuestionIndex);
+
         } else {
            this.router.navigate(['/quiz/result'], {
                 state: {
@@ -217,6 +240,31 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
                 }
            });
         }
+   }
+
+   seeNextQuestion() {
+      const currentQuestionIndex = this.currentQuestionIndex()! + 1;
+      if (currentQuestionIndex < this.questions.length) {
+        this.currentQuestion.set(this.questions[currentQuestionIndex]);
+        this.currentQuestionIndex.set(currentQuestionIndex);
+      } else {
+          this.router.navigate(['/quiz/result'], {
+            state: {
+                correctQuestionsId: this.correctQuestionsId(),
+                questions: this.questions,
+                timer: this.timer(),
+            }
+        });
+      }
+   }
+
+   seePreviousQuestion() {
+      if (this.currentQuestionIndex() === null) return;
+      const currentQuestionIndex = this.currentQuestionIndex()! - 1;
+      if (currentQuestionIndex >= 0) {
+        this.currentQuestion.set(this.questions[currentQuestionIndex]);
+        this.currentQuestionIndex.set(currentQuestionIndex);
+      }
    }
 
    ngOnDestroy(): void {
