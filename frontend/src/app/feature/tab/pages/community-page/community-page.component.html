@@ -17,16 +17,16 @@
     <ion-list lines="none" class="friends">
 
       @for (i of countItems; track i; let even = $even) {
-        <ion-item button class="mt-3" routerLink="/tabs/chat">
+        <ion-item button routerLink="/tabs/chat">
           <ion-avatar>
             <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </ion-avatar>
           <div class="flex flex-col ms-4 w-full gap-0.5 pb-3">
             <div class="flex justify-between items-center">
-              <ion-text class="font-medium">Gabriel Cardoso</ion-text>
-              <div class="w-3 h-3  relative top-2 rounded-full {{ even ? 'bg-green-600' : 'bg-red-600' }} "></div>
+              <ion-text class="font-medium mt-3">Gabriel Cardoso</ion-text>
+              <div class="w-3 h-3 relative top-4 rounded-full {{ even ? 'bg-green-600' : 'bg-red-600' }} "></div>
             </div>
-            <ion-text class="text-sm opacity-80">Último visto ontem às 15:00</ion-text>
+            <ion-text class="text-sm opacity-80">Visto por último ontem às 15:00</ion-text>
           </div>
         </ion-item>
       }
@@ -63,16 +63,16 @@
     <ion-list>
 
       @for (i of countItems; track i) {
-        <ion-item button class="mt-3" routerLink="/tabs/chat">
+        <ion-item button routerLink="/tabs/chat">
           <ion-avatar>
             <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </ion-avatar>
-          <div class="flex flex-col ms-4 w-full gap-0.5 pb-3">
-            <div class="flex justify-between">
+          <div class="flex justify-between ms-4 w-full gap-0.5 pb-3">
+            <div class="flex flex-col justify-center mt-1">
               <ion-text class="font-medium">Gabriel Cardoso</ion-text>
-              <span class="text-xs">17:00</span>
+              <ion-text class="text-sm">Oi, vamos estudar mais?</ion-text>
             </div>
-            <ion-text class="text-sm">Oi, vamos estudar mais?</ion-text>
+            <span class="text-xs mt-5">17:00</span>
           </div>
         </ion-item>
       }

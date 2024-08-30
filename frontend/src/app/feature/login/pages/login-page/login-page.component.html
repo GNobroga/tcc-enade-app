@@ -1,5 +1,5 @@
 <app-login-form #container>
-  <div class="pb-4">
+  <div class="pb-2">
     <ion-item lines="none" class="form-group">
       <ion-input placeholder="E-mail"></ion-input>
     </ion-item>
@@ -9,7 +9,7 @@
       <ion-input type="password" placeholder="Senha"></ion-input>
     </ion-item>
 
-    <div matRipple class="cursor-pointer  py-2 mt-2" matRippleColor="rgba(0, 0, 0, 0.02)">
+    <div matRipple class="cursor-pointer py-2 mt-2" matRippleColor="rgba(0, 0, 0, 0.02)">
       <ion-text color="primary" class="text-sm">Esqueci minha senha</ion-text>
     </div>
 
@@ -20,20 +20,19 @@
     <div class="flex items-center gap-2 opacity-60 mt-4">
       <div class="flex-1 h-[0.13rem] bg-black bg-opacity-40"></div>
       <span>ou</span>
-      <div class="flex-1 h-[0.13rem] bg-black  bg-opacity-40"></div>
+      <div class="flex-1 h-[0.13rem] bg-black bg-opacity-40"></div>
     </div>
 
     <div class="mt-4">
-      <ion-item lines="none" button class="button-google">
-        <ion-img slot="start" src="assets/image/google.png"></ion-img>
+      <ion-item lines="none" button class="button-google" color="primary">
+        <ion-img slot="start" src="assets/image/google.svg" class="py-2"></ion-img>
         <ion-text color="light" class="text-base">Entrar com o Google</ion-text>
       </ion-item>
     </div>
 
-
     <div class="mt-4">
       <ion-item lines="none" button class="button-github" color="dark">
-        <ion-img slot="start" src="assets/image/github.png"></ion-img>
+        <ion-img slot="start" src="assets/image/github.svg" class="py-2"></ion-img>
         <ion-text color="light" class="text-base">Entrar com o GitHub</ion-text>
       </ion-item>
     </div>
