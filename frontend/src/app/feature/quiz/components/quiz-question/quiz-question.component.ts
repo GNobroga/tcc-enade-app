@@ -73,7 +73,7 @@ export class QuizQuestionComponent implements OnInit {
   }
 
   get correct() {
-    return this.parent.correctQuestionsId().includes(this.data.correctId);
+    return this.parent.listCorrectQuestionsId().includes(this.data.correctId);
   }
 
 
