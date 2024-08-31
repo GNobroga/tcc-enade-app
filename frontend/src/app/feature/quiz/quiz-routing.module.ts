@@ -12,7 +12,7 @@ const routes: Routes = [
     component: QuizSelectionComponent,
     data: {
       title: 'Fundamentos da Computação',
-      cssClass: 'bg-gradient-to-r  from-[#7acf7e] to-[#47A34C]',
+      cssClass: 'bg-gradient-to-l from-[#59eb60] to-[#03a20b]',
     }
   },
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
     component: QuizSelectionComponent,
     data: {
       title: 'Infraestrutura',
-      cssClass: 'bg-gradient-to-l  from-[#3ECFB0] to-[#4ABBC1]',
+      cssClass: 'bg-gradient-to-l from-[#55e4c5] to-[#0851c7]',
     }
   },
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
     component: QuizSelectionComponent,
     data: {
       title: 'Lógica de Programação',
-      cssClass: 'bg-gradient-to-l  from-[#FEB125] to-[#FB6822]',
+      cssClass: 'bg-gradient-to-l from-[#ffb429] to-[#f15c17]',
     }
   },
   {
@@ -36,7 +36,7 @@ const routes: Routes = [
     component: QuizSelectionComponent,
     data: {
       title: 'Segurança da Informação',
-      cssClass: 'bg-gradient-to-l  from-[#89C644] to-[#0AB193]',
+      cssClass: 'bg-gradient-to-l from-[#9fe949] to-[#049a70]',
     }
   },
   {
@@ -44,7 +44,7 @@ const routes: Routes = [
     component: QuizSelectionComponent,
     data: {
       title: 'Desenvolvimento de Software',
-      cssClass: 'bg-gradient-to-l  from-[#39CCDC] to-[#578DE3]',
+      cssClass: 'bg-gradient-to-l from-[#2fd6e9] to-[#2b06d0]',
     }
   },
   {
