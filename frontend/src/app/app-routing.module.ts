@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoadingPageComponent } from './shared/pages/loading-page/loading-page.component';
 
 const routes: Routes = [
   {
@@ -24,10 +23,6 @@ const routes: Routes = [
     path: 'quiz',
     loadChildren: () => import('./feature/quiz/quiz.module'),
   },
-  {
-    path: 'loading',
-    component: LoadingPageComponent,
-  }
 ];
 
 @NgModule({
