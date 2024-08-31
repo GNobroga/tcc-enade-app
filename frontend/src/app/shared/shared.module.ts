@@ -1,26 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ChartModule } from 'primeng/chart';
-import { MatBadgeModule } from '@angular/material/badge';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
+import { IonicModule } from '@ionic/angular';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
-  declarations: [
-    LoadingPageComponent
-  ],
-  imports: [
-    IonicModule
-  ],
+  declarations: [],
+  imports: [],
   exports: [
     CommonModule,
     IonicModule,
@@ -35,8 +30,7 @@ import { LoadingPageComponent } from './pages/loading-page/loading-page.componen
     MatDialogModule,
     ChartModule,
     MatBadgeModule,
-    MatMenuModule,
-    LoadingPageComponent
+    MatMenuModule
   ],
 })
 export class SharedModule {}

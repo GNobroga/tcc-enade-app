@@ -70,13 +70,17 @@ export class QuizResultComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async restart() {
-    await this.router.navigate(['/quiz/started']);
-    window.location.reload();
+    await this.router.navigate(['/quiz/started'], {
+      queryParams: {
+        restart: true,
+      }
+    });
   }
 
   async goToStudyPage() {
-    await this.router.navigate(['/tabs/study']);
-    window?.location.reload();
+    await this.router.navigate(['/tabs/study'], {
+      // skipLocationChange: true,
+    });
   }
 
   ngOnDestroy(): void {

@@ -13,11 +13,12 @@
 <ion-content class="ion-padding">
   <section>
 
-    @if (currentQuestion(); as question) {
-     <div class="mt-3">
-      <app-quiz-question [data]="question"/>
-     </div>
+    @defer (when currentQuestion() !== null) {
+      <div class="mt-3">
+        <app-quiz-question [data]="currentQuestion()!"/>
+       </div>
     }
+
 
     @if (isJustSee()) {
      <div class="flex gap-3 justify-between">

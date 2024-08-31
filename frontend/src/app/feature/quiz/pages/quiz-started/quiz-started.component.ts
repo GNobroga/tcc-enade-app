@@ -143,7 +143,7 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
 
     currentQuestionIndex = signal<number | null>(null);
 
-    correctQuestionsId = signal<number[]>([]);
+    listCorrectQuestionsId = signal<number[]>([]);
 
     currentPercentage = signal(0);
 
@@ -158,15 +158,34 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
     constructor(readonly router: Router, readonly route: ActivatedRoute) {}
 
     ngOnInit() {
+
         this.subscription.add(this.route.queryParams.subscribe(params => {
-          const justSee = params['just_see'] === 'true';
-          this.isJustSee.set(justSee);
-          if (!justSee) return;
-          this.timerSubscription.unsubscribe();
-          const timer = this.router.getCurrentNavigation()?.extras.state?.['timer'] ?? [0, 0, 0];
-          this.timer.set(timer);
-          this.currentQuestion.set(this.questions[0]);
-          this.currentQuestionIndex.set(0);
+          let isJustSee = params['just_see'] === 'true';
+          let isRestart = params['restart'] === 'true';
+
+          if (isRestart) {
+            isJustSee = false;
+          }
+
+          if (isJustSee) {
+            this.isJustSee.set(isJustSee);
+            if (!isJustSee) return;
+            this.timerSubscription.unsubscribe();
+            const timer = this.router.getCurrentNavigation()?.extras.state?.['timer'] ?? [0, 0, 0];
+            this.timer.set(timer);
+            this.currentQuestion.set(this.questions[0]);
+            this.currentQuestionIndex.set(0);
+          }
+
+          if (isRestart) {
+            this.timer.set([0, 0, 0]);
+            this.listCorrectQuestionsId.set([]);
+            this.currentQuestion.set(this.questions[0]);
+            this.currentQuestionIndex.set(0);
+            this.isJustSee.set(false);
+            this.currentPercentage.set(0);
+          }
+
         }));
 
 
@@ -213,7 +232,7 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
         this.currentPercentage.update(oldPercentage => oldPercentage + (currentQuestionIndex / this.questions.length));
 
         if (this.quizQuestionComponent.isCorrect()) {
-          this.correctQuestionsId.set(this.correctQuestionsId().concat(this.currentQuestion()!.id));
+          this.listCorrectQuestionsId.set(this.listCorrectQuestionsId().concat(this.currentQuestion()!.id));
         }
 
         this.quizQuestionComponent.selectedAlternativeId.set(null);
@@ -225,7 +244,7 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
         } else {
            this.router.navigate(['/quiz/result'], {
                 state: {
-                    correctQuestionsId: this.correctQuestionsId(),
+                    correctQuestionsId: this.listCorrectQuestionsId(),
                     questions: this.questions,
                     timer: this.timer(),
                 }
@@ -241,7 +260,7 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
       } else {
           this.router.navigate(['/quiz/result'], {
             state: {
-                correctQuestionsId: this.correctQuestionsId(),
+                correctQuestionsId: this.listCorrectQuestionsId(),
                 questions: this.questions,
                 timer: this.timer(),
             }
