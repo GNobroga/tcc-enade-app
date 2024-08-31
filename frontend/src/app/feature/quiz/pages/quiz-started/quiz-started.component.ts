@@ -89,40 +89,95 @@ const questions: Question[] = [
                 id: 1,
                 label: `
                     Base de conhecimento é o componente que mantém os axiomas gramaticais e léxicos definidos
-pelos especialistas.
+                    pelos especialistas.
                 `
             },
             {
                 id: 2,
                 label: `
                     Base de informações estratégicas é o componente que possui as técnicas de navegação nas bases
-de conhecimento
+                    de conhecimento
                 `,
             },
             {
                 id: 3,
                 label: `
                     Base de regras é o componente que traduz todas as informações externas que estejam em interação
-com o sistema especialista.
+                    com o sistema especialista.
                 `,
             },
             {
                 id: 4,
                 label: `
                     Analisador semântico é o componente que obtém e armazena informações sobre diagnósticos por
-meio de um reconhecimento de regras gramaticais.
+                    meio de um reconhecimento de regras gramaticais.
                 `,
             },
             {
                 id: 5,
                 label: `
                 Motor de inferência é o componente que possui um conjunto de heurísticas adotadas para a resolução
-de problemas na execução das tarefas.
+                de problemas na execução das tarefas.
                 `,
             }
         ],
         correctId: 3
     },
+    {
+      id: 2,
+      title: 'Gestão',
+      content: `
+        No desenvolvimento do módulo de integração do sistema do SAMU com os sistemas de hospitais,
+        um analista gerou o seguinte diagrama de sequência
+      `,
+      photos: ['assets/enade/questao-pagina-35.png'],
+      asking: {
+          title: `
+             Com relação ao diagrama apresentado, avalie as asserções a seguir e a relação proposta entre elas.
+          `,
+          body: [
+            `I. As chamadas 4: procurarVaga() e 5: procurarVaga() são feitas simultaneamente (em paralelo) pela
+            API para minimizar o tempo de espera da chamada 2: procurarLeitos().`,
+            `II. As chamadas 10: definirVaga() e 12: definirVaga() são feitas simultaneamente (em paralelo),
+            mas a espera do retorno é feita em sequência, o que aumentará o tempo de resposta`,
+          ],
+          footer: 'A respeito dessas asserções, assinale a opção correta.',
+      },
+      alternatives: [
+          {
+              id: 1,
+              label: `
+                  As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I
+              `
+          },
+          {
+              id: 2,
+              label: `
+                 As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I
+              `,
+          },
+          {
+              id: 3,
+              label: `
+                  A asserção I é uma proposição verdadeira, e a II é uma proposição falsa.
+              `,
+          },
+          {
+              id: 4,
+              label: `
+                 A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.
+              `,
+          },
+          {
+              id: 5,
+              label: `
+              As asserções I e II são proposições falsas
+              `,
+          }
+      ],
+      correctId: 4
+  },
+
 ];
 
 @Component({

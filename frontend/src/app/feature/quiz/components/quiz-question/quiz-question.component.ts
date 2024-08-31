@@ -1,4 +1,4 @@
-import { Component, computed, DoCheck, effect, inject, input, Input, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, Input, OnInit, signal } from '@angular/core';
 import { QuizStartedComponent } from '../../pages/quiz-started/quiz-started.component';
 
 export type Alternative = {
@@ -16,6 +16,7 @@ export type Question = {
   id: number;
   title: string;
   content: string;
+  photos?: string[];
   asking: Asking;
   alternatives: Alternative[];
   correctId: number;

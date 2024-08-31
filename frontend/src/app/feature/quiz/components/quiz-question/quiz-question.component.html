@@ -7,6 +7,16 @@
     <p class="leading-loose tracking-tight text-base">
       {{ data.content }}
     </p>
+    <div *ngIf="data.photos">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" *ngFor="let photo of data.photos">
+            <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image" width="250" [preview]="true"></p-image>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
     <div>
       <p class="leading-loose tracking-tight font-medium text-base">
         {{ data.asking.title }}

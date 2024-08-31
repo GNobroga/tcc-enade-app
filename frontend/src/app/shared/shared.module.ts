@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { IonicModule } from '@ionic/angular';
 import { ChartModule } from 'primeng/chart';
+import { ImageModule } from 'primeng/image';
+import { EditorModule } from 'primeng/editor';
 
 @NgModule({
   declarations: [],
@@ -30,7 +32,10 @@ import { ChartModule } from 'primeng/chart';
     MatDialogModule,
     ChartModule,
     MatBadgeModule,
-    MatMenuModule
+    MatMenuModule,
+    CommonModule,
+    ImageModule,
+    EditorModule
   ],
 })
 export class SharedModule {}

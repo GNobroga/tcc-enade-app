@@ -31,7 +31,9 @@
   }
 
   &__content {
-    @apply bg-[#DAE6FF] p-5  text-justify rounded-lg mx-1;
+    @apply bg-[#DAE6FF] p-5  rounded-lg mx-1;
+    text-align: justify;
+    text-justify: distribute-all-lines;
   }
 }
 

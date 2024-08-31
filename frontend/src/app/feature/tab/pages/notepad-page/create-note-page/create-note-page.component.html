@@ -21,8 +21,12 @@
   </div>
 </ion-header>
 <ion-content>
-  <div class="p-4 h-full">
-    <ion-input autofocus clearInput placeholder="Título" class="text-3xl font-medium opacity-80" autocapitalize="on"></ion-input>
-    <ion-textarea autocapitalize="on" autoGrow placeholder="Digite o conteúdo da sua nota aqui..."></ion-textarea>
+  <div class="h-full flex flex-col border space-y-2 border-red-600" [formGroup]="form">
+    <div class="px-2">
+      <ion-input formControlName="title" autofocus clearInput placeholder="Título" class="text-3xl font-medium opacity-80" autocapitalize="on"></ion-input>
+    </div>
+    <div class="flex-1">
+      <p-editor formControlName="content" placeholder="Escreva..." styleClass="h-full"></p-editor>
+    </div>
   </div>
 </ion-content>

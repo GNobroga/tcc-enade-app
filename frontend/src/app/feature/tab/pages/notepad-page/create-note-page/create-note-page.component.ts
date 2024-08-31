@@ -1,4 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-note-page',
@@ -6,8 +7,6 @@ import { Component, OnInit, signal } from '@angular/core';
   styleUrls: ['./create-note-page.component.scss'],
 })
 export class CreateNotePageComponent  implements OnInit {
-
-  public headerColor = signal('black');
   public readonly colorButtons = [
     'cadetblue',
     'cornflowerblue',
@@ -27,6 +26,12 @@ export class CreateNotePageComponent  implements OnInit {
     'lightseagreen'
   ];
 
+  public headerColor = signal(this.colorButtons[0]);
+
+  form = new FormGroup({
+      title: new FormControl(''),
+      content: new FormControl(''),
+  });
 
   constructor() { }
 
