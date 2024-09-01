@@ -1,20 +1,5 @@
-ion-item.form-group {
-  --background: #eeeeeebf;
-  --border-radius: 0.4rem;
-}
-
-.button-login-email {
-  --border-radius: 0.4rem;
-  --padding-top: 1rem;
-  --padding-bottom: 1rem;
-
-  &::part(native) {
-    color: white;
-  }
-}
-
-.button-google, .button-github {
-  --background: #4286F5;
-  --border-radius: 0.4rem;
+ion-item {
+  --ripple-color: transparent;
+  --background-hover: transparent;
 }
 

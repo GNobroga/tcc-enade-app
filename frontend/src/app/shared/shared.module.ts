@@ -18,6 +18,7 @@ import { ChipModule } from 'primeng/chip';
 import { RippleModule } from 'primeng/ripple';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [],
@@ -44,6 +45,7 @@ import { MatButtonModule } from '@angular/material/button';
     ButtonModule,
     MatButtonModule,
     MatDialogModule,
+    DividerModule
   ],
 })
 export class SharedModule {}

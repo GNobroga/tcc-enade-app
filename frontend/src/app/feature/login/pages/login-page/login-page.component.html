@@ -1,41 +1,17 @@
-<app-login-form #container>
-  <div class="pb-2">
-    <ion-item lines="none" class="form-group">
-      <ion-input placeholder="E-mail"></ion-input>
+<app-login-form>
+  <div image-content class="text-center py-8">
+    <img src="assets/image/study.png" >
+  </div>
+  <div form-inputs>
+    <input pInputText placeholder="E-mail" class="w-full"/>
+    <input pInputText type="password" placeholder="Senha" class="w-full mt-6"/>
+    <ion-item lines="none" button>
+      <div slot="end" class="text-sm">Esqueceu a senha?</div>
     </ion-item>
-
-
-    <ion-item lines="none" class="mt-4 form-group">
-      <ion-input type="password" placeholder="Senha"></ion-input>
-    </ion-item>
-
-    <div matRipple class="cursor-pointer py-2 mt-2" matRippleColor="rgba(0, 0, 0, 0.02)">
-      <ion-text color="primary" class="text-sm">Esqueci minha senha</ion-text>
-    </div>
-
-    <ion-button color="tertiary" expand="block"  class="button-login-email text-lg normal-case mt-4" (click)="showLoading()">
-      Entrar com E-mail
-    </ion-button>
-
-    <div class="flex items-center gap-2 opacity-60 mt-4">
-      <div class="flex-1 h-[0.13rem] bg-black bg-opacity-40"></div>
-      <span>ou</span>
-      <div class="flex-1 h-[0.13rem] bg-black bg-opacity-40"></div>
-    </div>
-
-    <div class="mt-4">
-      <ion-item lines="none" button class="button-google" color="primary">
-        <ion-img slot="start" src="assets/image/google.svg" class="py-2"></ion-img>
-        <ion-text color="light" class="text-base">Entrar com o Google</ion-text>
-      </ion-item>
-    </div>
-
-    <div class="mt-4">
-      <ion-item lines="none" button class="button-github" color="dark">
-        <ion-img slot="start" src="assets/image/github.svg" class="py-2"></ion-img>
-        <ion-text color="light" class="text-base">Entrar com o GitHub</ion-text>
-      </ion-item>
-    </div>
-
+    <p-button label="Login" styleClass="w-full mt-3"></p-button>
+  </div>
+  <div footer-content class="flex items-center gap-2" routerLink="/account/register" matRipple>
+    <span class="flex text-sm items-center">Não tem uma conta ainda? </span>
+    <span class="text-[#327aaa]">Registre-se</span>
   </div>
 </app-login-form>

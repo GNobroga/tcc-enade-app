@@ -59,7 +59,7 @@ export class PerfilPageComponent {
     const ref = this.dialogService.open(ChangeNameComponent, {
       header: 'Atualizar nome',
       modal: true,
-      width: '95vw',
+      width: '90vw',
       styleClass: 'bg-red-500',
       position: 'center',
     });
