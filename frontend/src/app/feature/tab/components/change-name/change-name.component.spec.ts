@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { UpdateNameDialogComponent } from './update-name-dialog.component';
+import { ChangeNameComponent } from './change-name.component';
 
-describe('UpdateNameDialogComponent', () => {
-  let component: UpdateNameDialogComponent;
-  let fixture: ComponentFixture<UpdateNameDialogComponent>;
+describe('ChangeNameComponent', () => {
+  let component: ChangeNameComponent;
+  let fixture: ComponentFixture<ChangeNameComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateNameDialogComponent ],
+      declarations: [ ChangeNameComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(UpdateNameDialogComponent);
+    fixture = TestBed.createComponent(ChangeNameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

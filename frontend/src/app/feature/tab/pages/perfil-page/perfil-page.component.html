@@ -4,13 +4,20 @@
       <div class="relative w-24 h-24 rounded-full mx-auto">
         <img class="w-full h-full rounded-full" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
         <span class="absolute right-0 -bottom-2 scale-90">
-          <ion-button size="small">
-            <i slot="icon-only" class="fa-solid fa-pencil text-white"></i>
-          </ion-button>
+          <p-fileUpload
+            mode="basic"
+            chooseIcon="pi pi-image"
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            accept="image/*"
+            maxFileSize="1000000"
+            styleClass="rounded-full w-8 h-8 bg-[#a8a5a5] border-none"
+          >
+          </p-fileUpload>
         </span>
       </div>
       <div class="mt-3">
-        <span class="flex flex-col cursor-pointer" matRipple matRippleColor="rgba(0, 0, 0, 0.02)" (click)="openDialog()">
+        <span class="flex flex-col cursor-pointer" matRipple matRippleColor="rgba(0, 0, 0, 0.02)" (click)="showDialog()">
           <ion-label class="font-bold opacity-50 flex items-center gap-2">Nome <i class="fa-solid fa-pencil text-xs"></i></ion-label>
           <ion-text class="font-medium">Gabriel</ion-text>
         </span>
@@ -52,7 +59,7 @@
   [buttons]="closeAlertButtons"
 ></ion-alert>
 
-
+<p-toast [position]="'top-center'" styleClass="w-[80vw]" />
 
 <ion-alert
   trigger="delete-button"

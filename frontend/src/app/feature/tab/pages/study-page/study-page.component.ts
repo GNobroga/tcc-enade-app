@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
-import { Animation, AnimationController } from '@ionic/angular';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-study-page',
@@ -12,10 +12,12 @@ export class StudyPageComponent implements AfterViewInit {
   public readonly studyItems!: QueryList<ElementRef>;
 
   constructor(
-    public readonly animationController: AnimationController
+    public readonly animationController: AnimationController,
   ) {
 
   }
+
+
 
   public ngAfterViewInit() {
       this.studyItems.map(item => item.nativeElement)
