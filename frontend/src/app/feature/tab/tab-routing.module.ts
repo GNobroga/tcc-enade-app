@@ -12,6 +12,7 @@ import { NotepadPageComponent } from './pages/notepad-page/notepad-page.componen
 import { CreateNotePageComponent } from './pages/notepad-page/create-note-page/create-note-page.component';
 import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 import { CommunityPage } from './pages/community-page/community-page.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,10 @@ const routes: Routes = [
     path: 'achievement',
     component: AchievementPageComponent,
   },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+  }
 ];
 
 @NgModule({

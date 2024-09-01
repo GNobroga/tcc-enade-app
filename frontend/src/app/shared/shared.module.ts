@@ -20,15 +20,34 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { DividerModule } from 'primeng/divider';
 import { CarouselModule } from 'primeng/carousel';
+import { MessagesModule } from 'primeng/messages';
+import { BadgeModule } from 'primeng/badge';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { TabViewModule } from 'primeng/tabview';
+import { CardModule } from 'primeng/card';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { MenuModule } from 'primeng/menu';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [],
   imports: [],
   exports: [
     InputGroupModule,
+    CardModule,
+    TagModule,
+    ToggleButtonModule,
+    TabViewModule,
+    MenuModule,
+    IconFieldModule,
+    SplitButtonModule,
+    InputIconModule,
     ChipModule,
     RippleModule,
     AvatarModule,
+    MessagesModule,
     AvatarGroupModule,
     InputGroupAddonModule,
     InputTextModule,
@@ -47,7 +66,8 @@ import { CarouselModule } from 'primeng/carousel';
     MatButtonModule,
     MatDialogModule,
     DividerModule,
-    CarouselModule
+    CarouselModule,
+    BadgeModule
   ],
 })
 export class SharedModule {}

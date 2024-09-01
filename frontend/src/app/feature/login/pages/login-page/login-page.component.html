@@ -3,15 +3,17 @@
     <img src="assets/image/study.png" >
   </div>
   <div form-inputs>
-    <input pInputText placeholder="E-mail" class="w-full"/>
-    <input pInputText type="password" placeholder="Senha" class="w-full mt-6"/>
+    <input #email pInputText placeholder="E-mail" class="w-full"/>
+    <input #password pInputText type="password" placeholder="Senha" class="w-full mt-6"/>
     <ion-item lines="none" button>
       <div slot="end" class="text-sm">Esqueceu a senha?</div>
     </ion-item>
-    <p-button label="Login" styleClass="w-full mt-3"></p-button>
+    <p-button [loading]="loading()" (onClick)="signIn(email.value, password.value)" label="Login" styleClass="w-full mt-3"></p-button>
   </div>
-  <div footer-content class="flex items-center gap-2" routerLink="/account/register" matRipple>
+  <div footer-content class="flex items-center gap-2" matRipple routerLink="/account/register">
     <span class="flex text-sm items-center">Não tem uma conta ainda? </span>
     <span class="text-[#327aaa]">Registre-se</span>
   </div>
 </app-login-form>
+
+<p-toast position="top-center" styleClass="w-[80vw]" />

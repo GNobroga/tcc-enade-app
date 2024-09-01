@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <div slot="start" class="w-full mb-3">
+      <div class="flex justify-between">
+        <ion-back-button color="light"></ion-back-button>
+        <p-menu #menu [model]="items" [popup]="true" />
+        <p-button styleClass="text-white bg-transparent outline-none border-none" (onClick)="menu.toggle($event)" icon="pi pi-ellipsis-v"/>
+      </div>
+      <div class="flex flex-col items-center gap-3 mt-4 mb-3">
+        <p-avatar
+        label="G"
+        size="xlarge"
+        styleClass="font-bold bg-[#5B6CBE] text-white"
+        shape="circle" />
+        <ion-text class="text-lg font-medium text-white">Gabriel Cardoso</ion-text>
+        <div class="flex gap-2">
+          <p-chip  styleClass="flex items-center bg-[#eee]  gap-1 min-w-14 h-8" matRipple>
+            <ion-icon class="text-[#c0ac4c] text-xl" name="trophy"></ion-icon>
+            <span class="font-semibold text-[#9f8f3f]">1</span>
+          </p-chip>
+          <p-chip styleClass="flex items-center  bg-[#eee] gap-1 min-w-14 h-8" matRipple>
+            <i class="fa-solid fa-medal text-[#c0ac4c]"></i>
+            <span class="font-semibold text-[#9f8f3f]">100k</span>
+          </p-chip>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+
+  <p-tabView>
+    <p-tabPanel header="Status">
+        <app-user-stats class="mt-5"/>
+    </p-tabPanel>
+    <p-tabPanel header="Conquistas">
+       <app-user-achievement/>
+    </p-tabPanel>
+    <p-tabPanel header="Atividades">
+        <p>
+            At vero eos et accusamus et iusto odio dignissimos...
+        </p>
+    </p-tabPanel>
+</p-tabView>
+</ion-content>
+
+<p-toast [position]="'top-center'" styleClass="w-[80vw]" />

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api/menuitem';
 
 @Component({
   selector: 'app-chat-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-page.component.scss'],
 })
 export class ChatPageComponent  implements OnInit {
+
+  readonly messages = new Array(10);
 
   constructor() { }
 

@@ -1,8 +1,10 @@
-<div class="flex gap-5" [ngClass]="{ 'flex-row-reverse': isOwnMessage }">
-  <div>
-    <ion-avatar class="w-9 h-9">
-      <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-    </ion-avatar>
+<div #div class="flex gap-5" [ngClass]="{ 'flex-row-reverse': isOwnMessage }">
+  <div >
+    <p-avatar
+      label="G"
+      size="large"
+      styleClass="font-bold bg-[#5B6CBE] text-white cursor-pointer"
+      shape="circle" (click)="menu.toggle($event)" />
   </div>
   <div class="relative top-0.5">
     <span class="flex items-center gap-2 text-sm" [ngClass]="{ 'flex-row-reverse': isOwnMessage }">
@@ -14,3 +16,5 @@
     </div>
   </div>
 </div>
+
+<p-menu [appendTo]="div"  #menu [model]="items" [popup]="true" />

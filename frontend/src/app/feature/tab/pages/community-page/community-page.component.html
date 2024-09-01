@@ -18,13 +18,19 @@
 
       @for (i of countItems; track i; let even = $even) {
         <ion-item button routerLink="/tabs/chat">
-          <ion-avatar>
-            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </ion-avatar>
+          <p-avatar
+          label="G"
+          size="large"
+          styleClass="font-bold bg-[#5B6CBE] text-white"
+          shape="circle" />
           <div class="flex flex-col ms-4 w-full gap-0.5 pb-3">
             <div class="flex justify-between items-center">
               <ion-text class="font-medium mt-3">Gabriel Cardoso</ion-text>
-              <div class="w-3 h-3 relative top-4 rounded-full {{ even ? 'bg-green-600' : 'bg-red-600' }} "></div>
+
+              <p-tag *ngIf="even" severity="success"  value="Online" [rounded]="true" />
+              <p-tag *ngIf="!even" severity="warning"  value="Offline" [rounded]="true" />
+
+              <!-- <div class="w-3 h-3 relative top-4 rounded-full {{ even ? 'bg-green-600' : 'bg-red-600' }} "></div> -->
             </div>
             <ion-text class="text-sm opacity-80">Visto por último ontem às 15:00</ion-text>
           </div>
@@ -64,19 +70,23 @@
 
       @for (i of countItems; track i) {
         <ion-item button routerLink="/tabs/chat">
-          <ion-avatar>
-            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </ion-avatar>
+          <p-avatar
+          label="G"
+          size="large"
+          styleClass="font-bold bg-[#5B6CBE] text-white"
+          shape="circle" />
           <div class="flex justify-between ms-4 w-full gap-0.5 pb-3">
             <div class="flex flex-col justify-center mt-1">
               <ion-text class="font-medium">Gabriel Cardoso</ion-text>
               <ion-text class="text-sm">Oi, vamos estudar mais?</ion-text>
             </div>
-            <span class="text-xs mt-5">17:00</span>
+            <div class="flex flex-col gap-1">
+              <span class="text-xs">17:00</span>
+              <p-badge [value]="2"/>
+            </div>
           </div>
         </ion-item>
       }
-
     </ion-list>
 
   </ion-content>

@@ -1,0 +1,144 @@
+<div class="flex flex-wrap gap-3 mt-2">
+
+  <span class="flex mat-elevation-z2 flex-1 min-w-32 justify-between bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] text-white p-5 items-center rounded-lg">
+    <span class="flex flex-col">
+      <ion-text class="text-lg font-bold">0%</ion-text>
+      <ion-text class="text-sm opacity-70">Taxa de acerto</ion-text>
+    </span>
+    <i class="fa-solid fa-arrow-trend-up text-2xl"></i>
+  </span>
+
+
+  <span class="flex  mat-elevation-z2 flex-1 min-w-32 justify-between bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] text-white p-5 items-center rounded-lg">
+    <span class="flex flex-col">
+      <ion-text class="text-lg font-bold">0</ion-text>
+      <ion-text class="text-sm opacity-70">Quizzes</ion-text>
+    </span>
+    <i class="fa-solid fa-arrow-trend-up text-2xl"></i>
+  </span>
+
+  <span  class="flex mat-elevation-z2 flex-1 min-w-32 justify-between bg-gradient-to-l  bg-[#47A34C] text-white p-5 items-center rounded-lg">
+    <span class="flex flex-col">
+      <ion-text class="text-lg font-bold">0</ion-text>
+      <ion-text class="text-sm opacity-70">Certas</ion-text>
+    </span>
+    <i class="fa-solid fa-check text-2xl"></i>
+  </span>
+
+  <span  class="flex mat-elevation-z2 flex-1 min-w-32 justify-between bg-gradient-to-l  bg-[#c10808]  text-white p-5 items-center rounded-lg">
+    <span class="flex flex-col">
+      <ion-text class="text-lg font-bold">0</ion-text>
+      <ion-text class="text-sm">Erradas</ion-text>
+    </span>
+    <i class="fa-solid fa-xmark text-3xl"></i>
+  </span>
+
+  <span  class="flex mat-elevation-z2 flex-1 min-w-full p-4 px-5  bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] text-white items-center rounded-lg">
+    <i class="fa-solid fa-chart-simple  text-2xl "></i>
+    <span class="flex flex-col ms-4">
+      <ion-text class="text-lg font-bold">?</ion-text>
+      <ion-text class="text-sm">Ranking Setembro</ion-text>
+    </span>
+  </span>
+
+  <span  class="flex mat-elevation-z2 flex-1 min-w-full  p-4 px-5  bg-gradient-to-l  from-[#39CCDC] to-[#578DE3] text-white items-center rounded-lg">
+    <i class="fa-solid fa-clock text-3xl "></i>
+    <span class="flex flex-col ms-4">
+      <ion-text class="text-lg font-bold">0 min</ion-text>
+      <ion-text class="text-sm">Tempo médio/questão</ion-text>
+    </span>
+  </span>
+</div>
+
+<div class="mt-5">
+  <ion-label class="font-bold uppercase">Tópicos fortes</ion-label>
+  <div class="flex flex-wrap gap-3 mt-2">
+      <span class="flex px-3 py-5 mat-elevation-z2 bg-gradient-to-r from-[#ffb429] to-[#f15c17] w-full rounded-lg items-center gap-4">
+        <p-avatar
+          image="assets/image/logic.png"
+          size="normal"
+          badgeSize="large"
+          styleClass="relative top-1"
+          />
+          <div>
+            <ion-text class="font-semibold text-white">Lógica de Programação</ion-text>
+            <p-progressBar [value]="50" styleClass="mt-2" color="#ffb429">
+              <ng-template pTemplate="content" let-value>
+              <span>{{value}}/100</span>
+              </ng-template>
+          </p-progressBar>
+          </div>
+      </span>
+
+      <span class="flex justify-center mat-elevation-z2 px-3 py-5 bg-gradient-to-r from-[#59eb60] to-[#03a20b] w-full rounded-lg items-center gap-4">
+        <p-avatar
+          image="assets/image/code.png"
+          size="normal"
+          badgeSize="large"
+          styleClass="relative top-1"
+          />
+          <div>
+            <ion-text class="font-semibold text-white">Teoria da Computação</ion-text>
+            <p-progressBar [value]="50" styleClass="mt-2" color="#59eb60">
+              <ng-template pTemplate="content" let-value>
+              <span>{{value}}/100</span>
+              </ng-template>
+          </p-progressBar>
+          </div>
+      </span>
+
+      <span class="flex px-3 py-5 mat-elevation-z2 bg-gradient-to-r from-[#2fd6e9] to-[#2b06d0] w-full rounded-lg items-center gap-4">
+        <p-avatar
+          image="assets/image/software.png"
+          size="normal"
+          badgeSize="large"
+          styleClass="relative top-1"
+          />
+          <div class="w-full">
+            <ion-text class="font-semibold text-white">Desenvolvimento</ion-text>
+            <p-progressBar [value]="50" styleClass="mt-2" color="#2fd6e9">
+              <ng-template pTemplate="content" let-value>
+              <span>{{value}}/100</span>
+              </ng-template>
+          </p-progressBar>
+          </div>
+      </span>
+
+
+      <span class="flex px-3 mat-elevation-z2 py-5 bg-gradient-to-l from-[#9fe949] to-[#049a70] w-full rounded-lg items-center gap-4">
+        <p-avatar
+          image="assets/image/security.png"
+          size="normal"
+          badgeSize="large"
+          styleClass="relative top-1"
+          />
+          <div class="w-full">
+            <ion-text class="font-semibold text-white">Segurança</ion-text>
+            <p-progressBar [value]="50" styleClass="mt-2 w-full" color="#9fe949">
+              <ng-template pTemplate="content" let-value>
+              <span>{{value}}/100</span>
+              </ng-template>
+          </p-progressBar>
+          </div>
+      </span>
+
+      <span class="flex px-3 mat-elevation-z2  py-5 bg-gradient-to-b from-[#55e4c5] to-[#0851c7] w-full rounded-lg items-center gap-4">
+        <p-avatar
+          image="assets/image/infrastructure.png"
+          size="normal"
+          badgeSize="large"
+          styleClass="relative top-1"
+          />
+          <div class="w-full">
+            <ion-text class="font-semibold text-white">Infraestrutura</ion-text>
+            <p-progressBar [value]="50" styleClass="mt-2 w-full" color="#55e4c5">
+              <ng-template pTemplate="content" let-value>
+              <span>{{value}}/100</span>
+              </ng-template>
+          </p-progressBar>
+          </div>
+      </span>
+
+
+  </div>
+</div>
