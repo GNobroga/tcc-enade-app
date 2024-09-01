@@ -1,9 +1,16 @@
-ion-content {
-  --background: url('../../../assets/image/background.png');
-  filter: saturate(150%);
+
+.bar {
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+
+  &--active {
+    background-color: #2196f3;
+  }
 }
 
 
-ion-button {
-  --border-radius: 0.4rem;
-}
+
+

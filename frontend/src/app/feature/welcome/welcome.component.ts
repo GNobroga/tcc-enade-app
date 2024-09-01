@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { App } from '@capacitor/app';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
 
@@ -7,23 +7,23 @@ import { IonRouterOutlet, Platform } from '@ionic/angular';
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
 })
-export class WelcomeComponent  implements OnInit {
+export class WelcomeComponent {
 
-  constructor(
-    public readonly platform: Platform,
-    public readonly routerOutlet: IonRouterOutlet
-  ) {}
+  readonly MAX_STEP_SIZE = 3;
 
-  public ngOnInit() {
-    this.platform.ready().then(() => {
-      this.platform.backButton.subscribeWithPriority(10, () => {
-        if (this.routerOutlet && this.routerOutlet.canGoBack()) {
-          this.routerOutlet.pop();
-        } else {
-          App.exitApp();
-        }
-      });
-    });
+  currentStep = signal(1);
+
+
+  nextStep() {
+    if (this.currentStep() < this.MAX_STEP_SIZE) {
+      this.currentStep.set(this.currentStep() + 1);
+    }
+  }
+
+  previousStep() {
+    if (this.currentStep() > 1) {
+      this.currentStep.set(this.currentStep() - 1);
+    }
   }
 
 }

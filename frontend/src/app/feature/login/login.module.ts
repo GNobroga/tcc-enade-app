@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { LoginComponent } from './login.component';
 import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { AccountCreatedComponent } from './pages/account-created/account-created.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     LoginComponent,
     LoginFormComponent,
     CreateAccountPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    AccountCreatedComponent
   ],
   imports: [
     SharedModule,

@@ -19,6 +19,7 @@ import { RippleModule } from 'primeng/ripple';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { DividerModule } from 'primeng/divider';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [],
@@ -45,7 +46,8 @@ import { DividerModule } from 'primeng/divider';
     ButtonModule,
     MatButtonModule,
     MatDialogModule,
-    DividerModule
+    DividerModule,
+    CarouselModule
   ],
 })
 export class SharedModule {}

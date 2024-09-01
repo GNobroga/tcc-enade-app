@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
+import { AccountCreatedComponent } from './pages/account-created/account-created.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
         component: CreateAccountPageComponent,
       }
     ],
+  },
+  {
+    path: 'created',
+    component: AccountCreatedComponent,
   }
 ];
 
