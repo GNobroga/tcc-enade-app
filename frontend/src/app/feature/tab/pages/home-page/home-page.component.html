@@ -1,19 +1,23 @@
 <ion-content>
-  <ion-toolbar color="primary" class="p-2 pt-4">
+  <ion-toolbar color="primary" class="p-2">
     <ion-buttons slot="start">
-      <ion-avatar class="w-10 h-10 cursor-pointer" matRipple matRippleColor="rgba(0, 0, 0, 0.4)" routerLink="/tabs/perfil">
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
+      <p-avatar
+        routerLink="/tabs/perfil"
+        label="G"
+        styleClass="mr-2"
+        shape="circle"
+        styleClass="font-bold bg-[#5B6CBE] text-white"
+        size="large" />
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button color="light" shape="round" fill="solid" routerLink="/tabs/achievement" class="relative right-0.5">
-        <ion-icon class="text-[#ffd60b]" slot="start" name="trophy"></ion-icon>
-        <span class="opacity-80 relative right-0.5">1</span>
-      </ion-button>
-      <ion-button color="light" shape="round" fill="solid" (click)="openWeekdaySequenceDialog()">
-        <ion-icon slot="start" color="primary" name="flame"></ion-icon>
-        <span class="opacity-80 relative right-0.5">1</span>
-      </ion-button>
+      <p-chip routerLink="/tabs/achievement" styleClass="flex items-center  gap-1 min-w-14 h-8" matRipple>
+        <ion-icon class="text-[#bba741] text-xl" name="trophy"></ion-icon>
+        <span class="font-semibold">1</span>
+      </p-chip>
+      <p-chip (click)="openWeekdaySequenceDialog()" styleClass="flex items-center  gap-1 min-w-14 h-8 ms-2" matRipple>
+        <ion-icon class="text-[#bba741] text-xl" color="primary" name="flame"></ion-icon>
+        <span class="font-semibold">1</span>
+      </p-chip>
     </ion-buttons>
   </ion-toolbar>
   <ion-item lines="none" color="primary">

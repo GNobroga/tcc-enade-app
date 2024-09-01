@@ -12,12 +12,22 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+import { ChipModule } from 'primeng/chip';
+import { RippleModule } from 'primeng/ripple';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [],
   imports: [],
   exports: [
     InputGroupModule,
+    ChipModule,
+    RippleModule,
+    AvatarModule,
+    AvatarGroupModule,
     InputGroupAddonModule,
     InputTextModule,
     ToastModule,
@@ -32,6 +42,8 @@ import { ToastModule } from 'primeng/toast';
     EditorModule,
     FileUploadModule,
     ButtonModule,
+    MatButtonModule,
+    MatDialogModule,
   ],
 })
 export class SharedModule {}
