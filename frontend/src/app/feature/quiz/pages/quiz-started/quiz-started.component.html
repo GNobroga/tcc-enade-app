@@ -10,7 +10,7 @@
     <ion-progress-bar [value]="currentPercentage()"  slot="start"></ion-progress-bar>
   </div>
 </ion-header>
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" [scrollX]="true" [scrollEvents]="true">
   <section>
 
     @defer (when currentQuestion() !== null) {

@@ -1,15 +1,24 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, signal, ViewChildren } from '@angular/core';
-import { Router } from '@angular/router';
-import { AnimationController } from '@ionic/angular';
-import { interval, Subscription } from 'rxjs';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router, RoutesRecognized } from '@angular/router';
+import { AnimationController, ViewDidEnter } from '@ionic/angular';
+import { filter, interval, Subscription } from 'rxjs';
 import { Question } from '../../components/quiz-question/quiz-question.component';
+import { MatDialog } from '@angular/material/dialog';
+import { QuizResultDialogComponent } from '../../components/quiz-result-dialog/quiz-result-dialog.component';
+
+interface QuizResultState {
+  questions: Question[];
+  timer: number[];
+  correctQuestionsId: number[];
+  showDialog: boolean;
+}
 
 @Component({
   selector: 'app-quiz-result',
   templateUrl: './quiz-result.component.html',
   styleUrls: ['./quiz-result.component.scss'],
 })
-export class QuizResultComponent implements OnInit, AfterViewInit, OnDestroy {
+export class QuizResultComponent implements ViewDidEnter, AfterViewInit, OnDestroy {
 
   @ViewChildren('img', { read: ElementRef })
   starsIcons!: QueryList<ElementRef>;
@@ -20,13 +29,47 @@ export class QuizResultComponent implements OnInit, AfterViewInit, OnDestroy {
   timer = signal<number[]>([0, 0, 0]);
   correctQuestionsId = signal<number[]>([]);
 
-  constructor(readonly animationController: AnimationController, readonly router: Router) { }
+  constructor(
+    readonly animationController: AnimationController,
+    readonly route: ActivatedRoute,
+    readonly router: Router,
+    readonly dialog: MatDialog
+  ) { }
 
-  ngOnInit() {
-    const { questions, timer, correctQuestionsId } = this.router.getCurrentNavigation()?.extras.state || {};
+  ionViewDidEnter() {
+
+    const state = JSON.parse(this.route.snapshot.queryParams['state']) as QuizResultState;
+
+    const { questions, timer, correctQuestionsId, showDialog = true } = state;
+
     this.questions.set(questions);
     this.timer.set(timer);
     this.correctQuestionsId.set(correctQuestionsId);
+
+    if (!showDialog) {
+      return;
+    }
+
+    if (correctQuestionsId.length === questions.length) {
+      this.dialog.open(QuizResultDialogComponent, {
+        data: {
+          type: 'good-job',
+        }
+      });
+    } else if (correctQuestionsId.length >= questions.length / 2) {
+      this.dialog.open(QuizResultDialogComponent, {
+        data: {
+          type: 'good-effort',
+        }
+      });
+    } else {
+      this.dialog.open(QuizResultDialogComponent, {
+        data: {
+          type: 'failure',
+        }
+      });
+    }
+
   }
 
   ngAfterViewInit() {
@@ -57,10 +100,9 @@ export class QuizResultComponent implements OnInit, AfterViewInit, OnDestroy {
   justSeeQuestions() {
     this.router.navigate(['/quiz/started'], {
       queryParams: {
-        just_see: true
-      },
-      state: {
-        timer: this.timer(),
+        just_see: true,
+        timer: JSON.stringify(this.timer()),
+        correctQuestionsId: JSON.stringify(this.correctQuestionsId()),
       },
     });
   }
@@ -70,11 +112,7 @@ export class QuizResultComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async restart() {
-    await this.router.navigate(['/quiz/started'], {
-      queryParams: {
-        restart: true,
-      }
-    });
+    await this.router.navigate(['/quiz/started']);
   }
 
   async goToStudyPage() {

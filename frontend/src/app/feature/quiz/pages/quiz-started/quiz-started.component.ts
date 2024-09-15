@@ -2,6 +2,7 @@ import { AfterViewInit, Component, effect, OnDestroy, OnInit, signal, ViewChild 
 import { interval, scan, Subscription, switchMap, tap } from 'rxjs';
 import { Question, QuizQuestionComponent } from '../../components/quiz-question/quiz-question.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IonContent, ViewDidEnter, ViewWillEnter } from '@ionic/angular';
 
 
 const questions: Question[] = [
@@ -121,10 +122,10 @@ const questions: Question[] = [
                 `,
             }
         ],
-        correctId: 3
+        correctId: 1
     },
     {
-      id: 2,
+      id: 3,
       title: 'Gestão',
       content: `
         No desenvolvimento do módulo de integração do sistema do SAMU com os sistemas de hospitais,
@@ -175,7 +176,7 @@ const questions: Question[] = [
               `,
           }
       ],
-      correctId: 4
+      correctId: 1
   },
 
 ];
@@ -185,7 +186,7 @@ const questions: Question[] = [
   templateUrl: './quiz-started.component.html',
   styleUrls: ['./quiz-started.component.scss'],
 })
-export class QuizStartedComponent implements OnInit, OnDestroy {
+export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
 
     timer = signal([0, 0, 0]); // hours, minutes and seconds
 
@@ -193,6 +194,9 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
 
     @ViewChild(QuizQuestionComponent)
     quizQuestionComponent!: QuizQuestionComponent;
+
+    @ViewChild(IonContent)
+    ionContent!: IonContent;
 
     currentQuestion = signal<Question | null>(null);
 
@@ -212,67 +216,59 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
 
     constructor(readonly router: Router, readonly route: ActivatedRoute) {}
 
-    ngOnInit() {
+    ionViewDidEnter(): void {
+      this.timerSubscription.unsubscribe();
 
-        this.subscription.add(this.route.queryParams.subscribe(params => {
-          let isJustSee = params['just_see'] === 'true';
-          let isRestart = params['restart'] === 'true';
+      if (this.route.snapshot.queryParams['just_see'] === 'true') {
+        const timer = JSON.parse(this.route.snapshot.queryParams['timer']);
+        const listCorrectQuestionsId = JSON.parse(this.route.snapshot.queryParams['correctQuestionsId']);
+        this.timer.set(timer);
+        this.listCorrectQuestionsId.set(listCorrectQuestionsId);
+        this.currentPercentage.set(1);
+        this.isJustSee.set(true);
+      } else {
+        this.timer.set([0, 0, 0]);
+        this.listCorrectQuestionsId.set([]);
+        this.currentPercentage.set(0);
+        this.disableButton.set(true);
+        this.timerSubscription = new Subscription();
+        this.isJustSee.set(false);
+        this.startTimer();
+      }
 
-          if (isRestart) {
-            isJustSee = false;
-          }
+      if (this.questions.length > 0) {
+        this.currentQuestion.set(this.questions[0]);
+        this.currentQuestionIndex.set(0);
+      }
 
-          if (isJustSee) {
-            this.isJustSee.set(isJustSee);
-            if (!isJustSee) return;
-            this.timerSubscription.unsubscribe();
-            const timer = this.router.getCurrentNavigation()?.extras.state?.['timer'] ?? [0, 0, 0];
-            this.timer.set(timer);
-            this.currentQuestion.set(this.questions[0]);
-            this.currentQuestionIndex.set(0);
-          }
-
-          if (isRestart) {
-            this.timer.set([0, 0, 0]);
-            this.listCorrectQuestionsId.set([]);
-            this.currentQuestion.set(this.questions[0]);
-            this.currentQuestionIndex.set(0);
-            this.isJustSee.set(false);
-            this.currentPercentage.set(0);
-          }
-
-        }));
+    }
 
 
-        if (this.questions.length > 0) {
-          this.currentQuestion.set(this.questions[0]);
-          this.currentQuestionIndex.set(0);
-        }
+    startTimer() {
+      const subscription = interval(1000)
+      .pipe(
+          scan(seconds => (seconds >= 59 ? 0 : seconds + 1), 0),
+          tap(seconds => {
+              this.timer.update(oldTimer => {
+                  let [hours, minutes] = oldTimer;
 
-        const subscription = interval(1000)
-        .pipe(
-            scan(seconds => (seconds >= 59 ? 0 : seconds + 1), 0),
-            tap(seconds => {
-                this.timer.update(oldTimer => {
-                    let [hours, minutes] = oldTimer;
+                  if (seconds >= 59) {
+                      minutes += 1;
+                  }
 
-                    if (seconds >= 59) {
-                        minutes += 1;
-                    }
+                  if (minutes >= 59) {
+                      hours += 1;
+                      minutes = 0;
+                  }
 
-                    if (minutes >= 59) {
-                        hours += 1;
-                        minutes = 0;
-                    }
+                  return [hours, minutes, seconds];
+              });
+          })
+      ).subscribe();
 
-                    return [hours, minutes, seconds];
-                });
-            })
-        ).subscribe();
+      this.timerSubscription.add(subscription);
 
-        this.timerSubscription.add(subscription);
-
-        subscription.add(subscription);
+      subscription.add(subscription);
     }
 
    get timerFormatted() {
@@ -297,13 +293,16 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
             this.currentQuestionIndex.set(currentQuestionIndex);
             this.disableButton.set(true);
         } else {
-           this.router.navigate(['/quiz/result'], {
-                state: {
-                    correctQuestionsId: this.listCorrectQuestionsId(),
-                    questions: this.questions,
-                    timer: this.timer(),
-                }
-           });
+          this.router.navigate(['/quiz/result'], {
+            queryParams: {
+             state: JSON.stringify(
+               {
+                 correctQuestionsId: this.listCorrectQuestionsId(),
+                 questions: this.questions,
+                 timer: this.timer(),
+               })
+            }
+         });
         }
    }
 
@@ -314,11 +313,15 @@ export class QuizStartedComponent implements OnInit, OnDestroy {
         this.currentQuestionIndex.set(currentQuestionIndex);
       } else {
           this.router.navigate(['/quiz/result'], {
-            state: {
+           queryParams: {
+            state: JSON.stringify(
+              {
                 correctQuestionsId: this.listCorrectQuestionsId(),
                 questions: this.questions,
                 timer: this.timer(),
-            }
+                showDialog: false,
+              })
+           }
         });
       }
    }

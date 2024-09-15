@@ -1,0 +1,17 @@
+<mat-dialog-content class="bg-white">
+  <div>
+    <div class="flex flex-col items-center justify-center">
+      <ion-img src="assets/image/trophy.gif" class="w-24"></ion-img>
+      <ion-text class="font-bold text-lg">{{ selectedItem()?.title }}</ion-text>
+      <ion-text class="text-center text-sm">{{  selectedItem()?.description }}</ion-text>
+    </div>
+    <div class="flex flex-col justify-center items-center mt-4">
+      <ion-button matDialogClose expand="full" color="primary" class="w-full mt-4 normal-case">
+        <span class="text-white">Continuar</span>
+      </ion-button>
+    </div>
+  </div>
+</mat-dialog-content>
+
+
+

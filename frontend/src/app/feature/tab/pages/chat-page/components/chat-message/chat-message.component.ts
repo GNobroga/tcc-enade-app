@@ -1,20 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, effect, ElementRef, Input, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api/menuitem';
+import { ChatPageComponent } from '../../chat-page.component';
+
+export interface ChatMessageMenuItem {
+  label: string;
+  command: () => void;
+}
 
 @Component({
   selector: 'app-chat-message',
   templateUrl: './chat-message.component.html',
   styleUrls: ['./chat-message.component.scss'],
 })
-export class ChatMessageComponent  implements OnInit {
+export class ChatMessageComponent implements OnInit {
 
   @Input()
   public isOwnMessage = false;
 
+  menuClosed = signal(true);
 
-
-  readonly items: MenuItem[] = [
+  readonly items: ChatMessageMenuItem[] = [
     {
       label: 'Ver perfil',
       command: () => {
@@ -30,8 +36,20 @@ export class ChatMessageComponent  implements OnInit {
   ];
 
   constructor(
-    readonly router: Router
-  ) { }
+    readonly router: Router,
+    readonly parent: ChatPageComponent,
+  ) {
+    effect(() => {
+      if (!this.menuClosed()) {
+        this.parent.chatMessages?.forEach(chatMessage => {
+          if (this !== chatMessage) {
+            chatMessage.menuClosed.set(true);
+          }
+
+        });
+      }
+    }, { allowSignalWrites: true })
+  }
 
   ngOnInit() {}
 

@@ -1,5 +1,7 @@
-import { Component, computed, inject, Input, OnInit, signal } from '@angular/core';
+import { AfterViewInit, Component, computed, inject, Input, OnInit, signal } from '@angular/core';
 import { QuizStartedComponent } from '../../pages/quiz-started/quiz-started.component';
+import { first } from 'rxjs';
+import { ViewDidEnter } from '@ionic/angular';
 
 export type Alternative = {
   id: number;
@@ -32,12 +34,16 @@ const ALPHABET = [
   templateUrl: './quiz-question.component.html',
   styleUrls: ['./quiz-question.component.scss'],
 })
-export class QuizQuestionComponent implements OnInit {
+export class QuizQuestionComponent implements OnInit, AfterViewInit {
 
   @Input({ required: true })
   data!: Question;
 
   selectedAlternativeId = signal<number | null>(null);
+
+  scrollEnd = signal(false);
+
+  scrollSize = signal(-1);
 
   isCorrect = computed(() => this.selectedAlternativeId() === this.data.correctId);
 
@@ -45,6 +51,18 @@ export class QuizQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.parent.disableButton.set(true);
+  }
+
+  ngAfterViewInit() {
+    this.parent.ionContent?.ionScroll.subscribe(event => {
+      if (event.detail.startY < this.scrollSize()) {
+        this.scrollEnd.set(false);
+      }
+
+      if (this.scrollEnd()) {
+        this.scrollSize.set(event.detail.startY);
+      }
+    });
   }
 
   getOrder(index: number) {
@@ -57,6 +75,10 @@ export class QuizQuestionComponent implements OnInit {
   markAnswer(id: number) {
     this.selectedAlternativeId.set(id);
     this.parent.disableButton.set(false);
+    if (this.scrollSize() > -1 || !this.scrollEnd()) {
+      this.parent.ionContent.scrollToBottom(400);
+      this.scrollEnd.set(true);
+    }
   }
 
   getAlternativeStatusClass(alternativeId: number) {

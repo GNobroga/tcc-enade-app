@@ -9,7 +9,9 @@ ion-content {
   }
 }
 
-ion-button[fill=outline] {
-  --border-color: red;
-  --color: red;
+
+#close-button, #delete-button {
+  --background: rgb(205, 59, 59);
+  --color: white;
 }
+

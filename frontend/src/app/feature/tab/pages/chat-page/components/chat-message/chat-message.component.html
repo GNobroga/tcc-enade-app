@@ -1,10 +1,11 @@
-<div #div class="flex gap-5" [ngClass]="{ 'flex-row-reverse': isOwnMessage }">
+<div class="flex gap-5 relative" [ngClass]="{ 'flex-row-reverse': isOwnMessage }">
   <div >
     <p-avatar
       label="G"
       size="large"
       styleClass="font-bold bg-[#5B6CBE] text-white cursor-pointer"
-      shape="circle" (click)="menu.toggle($event)" />
+      (click)="menuClosed.set(!menuClosed())"
+      shape="circle"/>
   </div>
   <div class="relative top-0.5">
     <span class="flex items-center gap-2 text-sm" [ngClass]="{ 'flex-row-reverse': isOwnMessage }">
@@ -15,6 +16,14 @@
       Olá, galera tudo bem com vocês?
     </div>
   </div>
+  <div *ngIf="!menuClosed()" class="menu absolute  p-2 top-12 z-40 mt-2 w-[40vw] rounded-lg bg-gradient-to-t from-blue-500 to-blue-700">
+    <div class="absolute -top-3 overflow-hidden h-5 z-50 w-full left-0 ">
+      <div class="triangle bg-gradient-to-r from-blue-500 to-blue-700"></div>
+    </div>
+    <ul class="list-none flex flex-col gap-2 text-sm text-white">
+      <li class="p-2 cursor-pointer" *ngFor="let item of items" matRipple (click)="item.command()">{{ item.label }}</li>
+    </ul>
+  </div>
 </div>
 
-<p-menu [appendTo]="div"  #menu [model]="items" [popup]="true" />
+

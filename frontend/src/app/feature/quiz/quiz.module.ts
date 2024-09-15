@@ -8,6 +8,7 @@ import { QuizHistoryComponent } from './pages/quiz-history/quiz-history.componen
 import { QuizStartedComponent } from './pages/quiz-started/quiz-started.component';
 import { QuizQuestionComponent } from './components/quiz-question/quiz-question.component';
 import { QuizResultComponent } from './pages/quiz-result/quiz-result.component';
+import { QuizResultDialogComponent } from './components/quiz-result-dialog/quiz-result-dialog.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { QuizResultComponent } from './pages/quiz-result/quiz-result.component';
     QuizStartedComponent,
     QuizQuestionComponent,
     QuizResultComponent,
+    QuizResultDialogComponent
   ],
   imports: [
     CommonModule,
