@@ -192,6 +192,8 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
 
     questions = questions;
 
+    static readonly HOUR_LIMIT = 2; // 2 horas
+
     @ViewChild(QuizQuestionComponent)
     quizQuestionComponent!: QuizQuestionComponent;
 
@@ -247,24 +249,21 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
     startTimer() {
       const subscription = interval(1000)
       .pipe(
-          scan(seconds => (seconds >= 59 ? 0 : seconds + 1), 0),
-          tap(seconds => {
-              this.timer.update(oldTimer => {
-                  let [hours, minutes] = oldTimer;
+        scan(seconds => seconds + 1, 0),
+        tap(totalSeconds => {
+          this.timer.update(oldTimer => {
+            let [hours, minutes, seconds] = oldTimer;
 
-                  if (seconds >= 59) {
-                      minutes += 1;
-                  }
+            // Calcular os segundos, minutos e horas
+            seconds = totalSeconds % 60;
+            minutes = Math.floor(totalSeconds / 60) % 60;
+            hours = Math.floor(totalSeconds / 3600);
 
-                  if (minutes >= 59) {
-                      hours += 1;
-                      minutes = 0;
-                  }
-
-                  return [hours, minutes, seconds];
-              });
-          })
-      ).subscribe();
+            return [hours, minutes, seconds];
+          });
+        })
+      )
+      .subscribe();
 
       this.timerSubscription.add(subscription);
 
@@ -275,6 +274,10 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
         const [hours, minutes, seconds] = this.timer();
         const hoursString = hours > 0 ? `${hours.toString().padStart(2, '0')}:` : '';
         return `${hoursString}${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+   }
+
+   get timeHasPassed() {
+    return this.timer()[0] > QuizStartedComponent.HOUR_LIMIT;
    }
 
    goToNext() {
@@ -292,6 +295,8 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
             this.currentQuestion.set(this.questions[currentQuestionIndex]);
             this.currentQuestionIndex.set(currentQuestionIndex);
             this.disableButton.set(true);
+            this.quizQuestionComponent.scrollEnd.set(false);
+            this.quizQuestionComponent.scrollEndSize.set(-1);
         } else {
           this.router.navigate(['/quiz/result'], {
             queryParams: {

@@ -43,7 +43,9 @@ export class QuizQuestionComponent implements OnInit, AfterViewInit {
 
   scrollEnd = signal(false);
 
-  scrollSize = signal(-1);
+  scrollEndSize = signal(-1);
+
+  currentScrollSize = signal(-1);
 
   isCorrect = computed(() => this.selectedAlternativeId() === this.data.correctId);
 
@@ -55,13 +57,14 @@ export class QuizQuestionComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.parent.ionContent?.ionScroll.subscribe(event => {
-      if (event.detail.startY < this.scrollSize()) {
-        this.scrollEnd.set(false);
+      if (this.scrollEnd()) {
+        this.scrollEndSize.set(event.detail.currentY);
+        setTimeout(() => {
+          this.scrollEnd.set(false);
+        }, 450);
       }
 
-      if (this.scrollEnd()) {
-        this.scrollSize.set(event.detail.startY);
-      }
+      this.currentScrollSize.set(event.detail.currentY);
     });
   }
 
@@ -73,11 +76,16 @@ export class QuizQuestionComponent implements OnInit, AfterViewInit {
   }
 
   markAnswer(id: number) {
+    if (this.parent.isJustSee()) return;
+
     this.selectedAlternativeId.set(id);
     this.parent.disableButton.set(false);
-    if (this.scrollSize() > -1 || !this.scrollEnd()) {
+
+    if (!this.scrollEnd() && this.scrollEndSize() === -1) {
       this.parent.ionContent.scrollToBottom(400);
       this.scrollEnd.set(true);
+    } else if (this.currentScrollSize() < this.scrollEndSize()) {
+      this.parent.ionContent.scrollToBottom(400);
     }
   }
 
