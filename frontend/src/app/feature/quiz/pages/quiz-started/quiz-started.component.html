@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
       <div class="flex items-center">
         <ion-title class="font-semibold">Enade 2021</ion-title>
-        <i class="heart fa-solid relative -left-3 fa-heart text-2xl scale-75 text-red-600" pBadge [value]="remainingChances()"  severity="warning" badgeStyleClass="bg-red-800"></i>
+        <i class="heart fa-solid relative -left-3 fa-heart text-2xl scale-75 text-red-600" pBadge *ngIf="remainingChances() > 0" [value]="remainingChances()"  severity="warning" badgeStyleClass="bg-red-800"></i>
       </div>
       <div slot="end" class="h-8 min-w-14 {{ timeHasPassed ? 'time-passed' : '' }}" >
         <ion-text class="text-lg">{{ timerFormatted }}</ion-text>
