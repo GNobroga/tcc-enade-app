@@ -282,8 +282,10 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
 
    goToNext() {
         if (this.currentQuestionIndex() === null) return;
+
         const currentQuestionIndex = this.currentQuestionIndex()! + 1;
-        this.currentPercentage.update(oldPercentage => oldPercentage + (currentQuestionIndex / this.questions.length));
+        this.currentPercentage.set(currentQuestionIndex / this.questions.length);
+  
 
         if (this.quizQuestionComponent.isCorrect()) {
           this.listCorrectQuestionsId.set(this.listCorrectQuestionsId().concat(this.currentQuestion()!.id));

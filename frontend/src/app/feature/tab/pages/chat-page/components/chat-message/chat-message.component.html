@@ -16,14 +16,20 @@
       Olá, galera tudo bem com vocês?
     </div>
   </div>
-  <div *ngIf="!menuClosed()" class="menu absolute  p-2 top-12 z-40 mt-2 w-[40vw] rounded-lg bg-gradient-to-t from-blue-500 to-blue-700">
-    <div class="absolute -top-3 overflow-hidden h-5 z-50 w-full left-0 ">
-      <div class="triangle bg-gradient-to-r from-blue-500 to-blue-700"></div>
+
+  @if (!menuClosed()) {
+    <div class="absolute p-2 top-12 z-40 mt-2 w-[40vw] rounded-lg bg-[var(--ion-color-primary)] border border-solid border-white shadow-lg transition-transform duration-300 ease-out transform hover:scale-105">
+      <ul class="list-none flex flex-col gap-2 text-sm text-white">
+        <li class="p-3 cursor-pointer rounded-md transition-colors duration-300 hover:bg-opacity-80 hover:bg-white hover:text-[var(--ion-color-primary)]"
+            *ngFor="let item of items" matRipple (click)="item.command()">
+          {{ item.label }}
+        </li>
+      </ul>
     </div>
-    <ul class="list-none flex flex-col gap-2 text-sm text-white">
-      <li class="p-2 cursor-pointer" *ngFor="let item of items" matRipple (click)="item.command()">{{ item.label }}</li>
-    </ul>
-  </div>
+
+
+  }
+
 </div>
 
 

@@ -13,7 +13,7 @@ export interface ChatMessageMenuItem {
   templateUrl: './chat-message.component.html',
   styleUrls: ['./chat-message.component.scss'],
 })
-export class ChatMessageComponent implements OnInit {
+export class ChatMessageComponent {
 
   @Input()
   public isOwnMessage = false;
@@ -51,6 +51,5 @@ export class ChatMessageComponent implements OnInit {
     }, { allowSignalWrites: true })
   }
 
-  ngOnInit() {}
 
 }
