@@ -221,6 +221,10 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
 
     isReview = signal(false);
 
+    isBellSwinging = signal(false);
+
+    remainingChances = signal(3);
+
     subscription = new Subscription();
 
     timerSubscription = new Subscription();
@@ -242,6 +246,7 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
         this.listCorrectQuestionsId.set(data.correctQuestionsId);
         this.currentPercentage.set(1);
         this.isReview.set(true);
+        this.isBellSwinging.set(false);
       } else {
         this.timer.set([0, 0, 0]);
         this.listCorrectQuestionsId.set([]);
@@ -250,6 +255,7 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
         this.timerSubscription = new Subscription();
         this.isReview.set(false);
         this.startTimer();
+        this.showBellSwinging();
       }
 
       if (this.questions.length > 0) {
@@ -294,6 +300,16 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
     return this.timer()[0] > QuizStartedComponent.HOUR_LIMIT;
    }
 
+   onClickBell() {
+      const correctId = this.currentQuestion()?.correctId!;
+      if (correctId === this.quizQuestionComponent.selectedAlternativeId()) {
+        return;
+      }
+      this.remainingChances.update(oldRemainingChances => oldRemainingChances - 1);
+      this.listCorrectQuestionsId().push(correctId);
+      this.quizQuestionComponent.markAnswer(correctId);
+   }
+
    goToNext() {
         if (this.currentQuestionIndex() === null) return;
 
@@ -313,6 +329,7 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
             this.disableButton.set(true);
             this.quizQuestionComponent.scrollEnd.set(false);
             this.quizQuestionComponent.scrollEndSize.set(-1);
+            this.showBellSwinging();
         } else {
           this.stateService.addState(QUIZ_RESULT_STATE_KEY, {
             correctQuestionsId: this.listCorrectQuestionsId(),
@@ -323,6 +340,14 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
           this.router.navigate(['/quiz/result']);
         }
    }
+
+  showBellSwinging() {
+    if (this.remainingChances() <= 0) return;
+    this.isBellSwinging.set(false);
+    setTimeout(() => {
+      this.isBellSwinging.set(true);
+    }, 30000);
+  }
 
    seeNextQuestion() {
       const currentQuestionIndex = this.currentQuestionIndex()! + 1;

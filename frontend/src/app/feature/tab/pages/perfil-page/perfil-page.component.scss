@@ -11,7 +11,7 @@ ion-content {
 
 
 #close-button, #delete-button {
-  --background: rgb(205, 59, 59);
+  --background: var(--ion-color-primary);
   --color: white;
 }
 
