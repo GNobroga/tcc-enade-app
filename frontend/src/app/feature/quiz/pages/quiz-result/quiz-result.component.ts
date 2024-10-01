@@ -5,8 +5,12 @@ import { filter, interval, Subscription } from 'rxjs';
 import { Question } from '../../components/quiz-question/quiz-question.component';
 import { MatDialog } from '@angular/material/dialog';
 import { QuizResultDialogComponent } from '../../components/quiz-result-dialog/quiz-result-dialog.component';
+import StateService from 'src/app/shared/services/state.service';
+import { QUIZ_STARTED_REVIEW_STATE_KEY } from '../quiz-started/quiz-started.component';
 
-interface QuizResultState {
+export const QUIZ_RESULT_STATE_KEY = 'quiz_result_state';
+
+export interface QuizResultState {
   questions: Question[];
   timer: number[];
   correctQuestionsId: number[];
@@ -33,15 +37,15 @@ export class QuizResultComponent implements ViewDidEnter, AfterViewInit, OnDestr
     readonly animationController: AnimationController,
     readonly route: ActivatedRoute,
     readonly router: Router,
-    readonly dialog: MatDialog
+    readonly dialog: MatDialog,
+    readonly stateService: StateService
   ) { }
 
   ionViewDidEnter() {
-
-    const state = JSON.parse(this.route.snapshot.queryParams['state']) as QuizResultState;
-
-    const { questions, timer, correctQuestionsId, showDialog = true } = state;
-
+    const data = this.stateService.get<QuizResultState>(QUIZ_RESULT_STATE_KEY);
+    if (!data) return;
+    console.log(data)
+    const { questions, timer, correctQuestionsId, showDialog = true } = data;
     this.questions.set(questions);
     this.timer.set(timer);
     this.correctQuestionsId.set(correctQuestionsId);
@@ -97,14 +101,13 @@ export class QuizResultComponent implements ViewDidEnter, AfterViewInit, OnDestr
     return (this.correctQuestionsId().length / this.questions().length);
   }
 
-  justSeeQuestions() {
-    this.router.navigate(['/quiz/started'], {
-      queryParams: {
-        just_see: true,
-        timer: JSON.stringify(this.timer()),
-        correctQuestionsId: JSON.stringify(this.correctQuestionsId()),
-      },
+  reviewQuestions() {
+    this.stateService.addState(QUIZ_STARTED_REVIEW_STATE_KEY, {
+      review: true,
+      timer: this.timer(),
+      correctQuestionsId: this.correctQuestionsId(),
     });
+    this.router.navigate(['/quiz/started']);
   }
 
   isCorrectQuestion(id: number) {
@@ -112,13 +115,15 @@ export class QuizResultComponent implements ViewDidEnter, AfterViewInit, OnDestr
   }
 
   async restart() {
+    this.stateService.removeState(QUIZ_STARTED_REVIEW_STATE_KEY);
+    this.stateService.removeState(QUIZ_RESULT_STATE_KEY);
     await this.router.navigate(['/quiz/started']);
   }
 
   async goToStudyPage() {
-    await this.router.navigate(['/tabs/study'], {
-      // skipLocationChange: true,
-    });
+    this.stateService.removeState(QUIZ_STARTED_REVIEW_STATE_KEY);
+    this.stateService.removeState(QUIZ_RESULT_STATE_KEY);
+    await this.router.navigate(['/tabs/study']);
   }
 
   ngOnDestroy(): void {

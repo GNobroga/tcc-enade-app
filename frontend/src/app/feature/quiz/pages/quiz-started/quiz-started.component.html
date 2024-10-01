@@ -25,7 +25,7 @@
     }
 
 
-    @if (isJustSee()) {
+    @if (isReview()) {
      <div class="flex gap-3 justify-between">
         @if (currentQuestionIndex()! > 0) {
           <ion-button class="mt-5 flex-1 !h-12 normal-case" (click)="seePreviousQuestion()">

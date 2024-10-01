@@ -76,7 +76,7 @@ export class QuizQuestionComponent implements OnInit, AfterViewInit {
   }
 
   markAnswer(id: number) {
-    if (this.parent.isJustSee()) return;
+    if (this.parent.isReview()) return;
 
     this.selectedAlternativeId.set(id);
     this.parent.disableButton.set(false);
@@ -90,7 +90,7 @@ export class QuizQuestionComponent implements OnInit, AfterViewInit {
   }
 
   getAlternativeStatusClass(alternativeId: number) {
-    if (this.parent.isJustSee()) {
+    if (this.parent.isReview()) {
       if (this.data.correctId === alternativeId) {
         return { correct: true };
       }
@@ -109,7 +109,7 @@ export class QuizQuestionComponent implements OnInit, AfterViewInit {
 
 
   getQuestionStatusClass() {
-    if (!this.parent.isJustSee()) return {};
+    if (!this.parent.isReview()) return {};
     return {
       'is-wrong': !this.correct,
       'is-correct': this.correct,

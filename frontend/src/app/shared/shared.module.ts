@@ -30,9 +30,11 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { MenuModule } from 'primeng/menu';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { TagModule } from 'primeng/tag';
+import StateService from './services/state.service';
 
 @NgModule({
   declarations: [],
+  providers: [StateService],
   imports: [],
   exports: [
     InputGroupModule,

@@ -3,7 +3,14 @@ import { interval, scan, Subscription, switchMap, tap } from 'rxjs';
 import { Question, QuizQuestionComponent } from '../../components/quiz-question/quiz-question.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent, ViewDidEnter, ViewWillEnter } from '@ionic/angular';
+import StateService from 'src/app/shared/services/state.service';
+import { QUIZ_RESULT_STATE_KEY, QuizResultState } from '../quiz-result/quiz-result.component';
 
+type ReviewState = {
+  review: boolean;
+  timer: [number, number, number];
+  correctQuestionsId: number[];
+}
 
 const questions: Question[] = [
     {
@@ -181,6 +188,8 @@ const questions: Question[] = [
 
 ];
 
+export const QUIZ_STARTED_REVIEW_STATE_KEY = 'quiz_started_review_state';
+
 @Component({
   selector: 'app-quiz-started',
   templateUrl: './quiz-started.component.html',
@@ -210,31 +219,36 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
 
     disableButton = signal(false);
 
-    isJustSee = signal(false);
+    isReview = signal(false);
 
     subscription = new Subscription();
 
     timerSubscription = new Subscription();
 
-    constructor(readonly router: Router, readonly route: ActivatedRoute) {}
+    constructor(
+      readonly router: Router,
+      readonly route: ActivatedRoute,
+      readonly stateService: StateService
+    ) {}
 
     ionViewDidEnter(): void {
       this.timerSubscription.unsubscribe();
 
-      if (this.route.snapshot.queryParams['just_see'] === 'true') {
-        const timer = JSON.parse(this.route.snapshot.queryParams['timer']);
-        const listCorrectQuestionsId = JSON.parse(this.route.snapshot.queryParams['correctQuestionsId']);
-        this.timer.set(timer);
-        this.listCorrectQuestionsId.set(listCorrectQuestionsId);
+      const data = this.stateService.get<ReviewState>(QUIZ_STARTED_REVIEW_STATE_KEY);
+
+
+      if (data?.review) {
+        this.timer.set(data.timer);
+        this.listCorrectQuestionsId.set(data.correctQuestionsId);
         this.currentPercentage.set(1);
-        this.isJustSee.set(true);
+        this.isReview.set(true);
       } else {
         this.timer.set([0, 0, 0]);
         this.listCorrectQuestionsId.set([]);
         this.currentPercentage.set(0);
         this.disableButton.set(true);
         this.timerSubscription = new Subscription();
-        this.isJustSee.set(false);
+        this.isReview.set(false);
         this.startTimer();
       }
 
@@ -285,7 +299,7 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
 
         const currentQuestionIndex = this.currentQuestionIndex()! + 1;
         this.currentPercentage.set(currentQuestionIndex / this.questions.length);
-  
+
 
         if (this.quizQuestionComponent.isCorrect()) {
           this.listCorrectQuestionsId.set(this.listCorrectQuestionsId().concat(this.currentQuestion()!.id));
@@ -300,16 +314,13 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
             this.quizQuestionComponent.scrollEnd.set(false);
             this.quizQuestionComponent.scrollEndSize.set(-1);
         } else {
-          this.router.navigate(['/quiz/result'], {
-            queryParams: {
-             state: JSON.stringify(
-               {
-                 correctQuestionsId: this.listCorrectQuestionsId(),
-                 questions: this.questions,
-                 timer: this.timer(),
-               })
-            }
-         });
+          this.stateService.addState(QUIZ_RESULT_STATE_KEY, {
+            correctQuestionsId: this.listCorrectQuestionsId(),
+            questions: this.questions,
+            timer: this.timer(),
+            showDialog: true,
+          });
+          this.router.navigate(['/quiz/result']);
         }
    }
 
@@ -319,17 +330,9 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
         this.currentQuestion.set(this.questions[currentQuestionIndex]);
         this.currentQuestionIndex.set(currentQuestionIndex);
       } else {
-          this.router.navigate(['/quiz/result'], {
-           queryParams: {
-            state: JSON.stringify(
-              {
-                correctQuestionsId: this.listCorrectQuestionsId(),
-                questions: this.questions,
-                timer: this.timer(),
-                showDialog: false,
-              })
-           }
-        });
+        const state = this.stateService.get<QuizResultState>(QUIZ_RESULT_STATE_KEY)!
+        state.showDialog = false;
+        this.router.navigate(['/quiz/result']);
       }
    }
 
