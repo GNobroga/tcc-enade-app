@@ -1,20 +1,22 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, signal, ViewChildren } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationStart, Router, RoutesRecognized } from '@angular/router';
-import { AnimationController, ViewDidEnter } from '@ionic/angular';
-import { filter, interval, Subscription } from 'rxjs';
-import { Question } from '../../components/quiz-question/quiz-question.component';
+import { AfterViewInit, Component, ElementRef, OnDestroy, QueryList, signal, ViewChildren } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AnimationController, ViewDidEnter } from '@ionic/angular';
+import { Store } from '@ngrx/store';
+import { interval, Subscription } from 'rxjs';
+import { AppState, selectQuizResultData } from 'src/app/store';
+import { resetQuizResultData, setQuizResultData } from 'src/app/store/actions/quiz-result.actions';
+import { Question } from '../../components/quiz-question/quiz-question.component';
 import { QuizResultDialogComponent } from '../../components/quiz-result-dialog/quiz-result-dialog.component';
-import StateService from 'src/app/shared/services/state.service';
-import { QUIZ_STARTED_REVIEW_STATE_KEY } from '../quiz-started/quiz-started.component';
 
 export const QUIZ_RESULT_STATE_KEY = 'quiz_result_state';
 
 export interface QuizResultState {
-  questions: Question[];
+  questions?: Question[];
   timer: number[];
   correctQuestionsId: number[];
-  showDialog: boolean;
+  showDialog?: boolean;
+  review?: boolean;
 }
 
 @Component({
@@ -38,14 +40,13 @@ export class QuizResultComponent implements ViewDidEnter, AfterViewInit, OnDestr
     readonly route: ActivatedRoute,
     readonly router: Router,
     readonly dialog: MatDialog,
-    readonly stateService: StateService
+    readonly store: Store<AppState>
   ) { }
 
   ionViewDidEnter() {
-    const data = this.stateService.get<QuizResultState>(QUIZ_RESULT_STATE_KEY);
+    const data = this.store.selectSignal(selectQuizResultData)();
     if (!data) return;
-    console.log(data)
-    const { questions, timer, correctQuestionsId, showDialog = true } = data;
+    const { questions = [], timer, correctQuestionsId, showDialog = true } = data;
     this.questions.set(questions);
     this.timer.set(timer);
     this.correctQuestionsId.set(correctQuestionsId);
@@ -102,11 +103,11 @@ export class QuizResultComponent implements ViewDidEnter, AfterViewInit, OnDestr
   }
 
   reviewQuestions() {
-    this.stateService.addState(QUIZ_STARTED_REVIEW_STATE_KEY, {
+    this.store.dispatch(setQuizResultData({
       review: true,
       timer: this.timer(),
       correctQuestionsId: this.correctQuestionsId(),
-    });
+    } as QuizResultState))
     this.router.navigate(['/quiz/started']);
   }
 
@@ -115,14 +116,12 @@ export class QuizResultComponent implements ViewDidEnter, AfterViewInit, OnDestr
   }
 
   async restart() {
-    this.stateService.removeState(QUIZ_STARTED_REVIEW_STATE_KEY);
-    this.stateService.removeState(QUIZ_RESULT_STATE_KEY);
+    this.store.dispatch(resetQuizResultData());
     await this.router.navigate(['/quiz/started']);
   }
 
   async goToStudyPage() {
-    this.stateService.removeState(QUIZ_STARTED_REVIEW_STATE_KEY);
-    this.stateService.removeState(QUIZ_RESULT_STATE_KEY);
+    this.store.dispatch(resetQuizResultData());
     await this.router.navigate(['/tabs/study']);
   }
 

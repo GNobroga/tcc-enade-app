@@ -104,7 +104,7 @@ export class QuizQuestionComponent implements OnInit, AfterViewInit {
   }
 
   get correct() {
-    return this.parent.listCorrectQuestionsId().includes(this.data.correctId);
+    return this.parent.listCorrectQuestionsId().includes(this.data.id);
   }
 
 

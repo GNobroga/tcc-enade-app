@@ -1,10 +1,12 @@
-import { AfterViewInit, Component, effect, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
-import { interval, scan, Subscription, switchMap, tap } from 'rxjs';
-import { Question, QuizQuestionComponent } from '../../components/quiz-question/quiz-question.component';
+import { Component, OnDestroy, signal, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent, ViewDidEnter, ViewWillEnter } from '@ionic/angular';
-import StateService from 'src/app/shared/services/state.service';
-import { QUIZ_RESULT_STATE_KEY, QuizResultState } from '../quiz-result/quiz-result.component';
+import { IonContent, ViewDidEnter } from '@ionic/angular';
+import { Store } from '@ngrx/store';
+import { interval, scan, Subscription, tap } from 'rxjs';
+import { AppState, selectQuizResultData } from 'src/app/store';
+import { setQuizResultData } from 'src/app/store/actions/quiz-result.actions';
+import { Question, QuizQuestionComponent } from '../../components/quiz-question/quiz-question.component';
+import { QuizResultState } from '../quiz-result/quiz-result.component';
 
 type ReviewState = {
   review: boolean;
@@ -232,16 +234,17 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
     constructor(
       readonly router: Router,
       readonly route: ActivatedRoute,
-      readonly stateService: StateService
+      readonly store: Store<AppState>
     ) {}
 
     ionViewDidEnter(): void {
       this.timerSubscription.unsubscribe();
 
-      const data = this.stateService.get<ReviewState>(QUIZ_STARTED_REVIEW_STATE_KEY);
+      console.log(this.store.selectSignal(selectQuizResultData)())
 
+      const data = this.store.selectSignal(selectQuizResultData)();
 
-      if (data?.review) {
+      if (data.review) {
         this.timer.set(data.timer);
         this.listCorrectQuestionsId.set(data.correctQuestionsId);
         this.currentPercentage.set(1);
@@ -331,12 +334,12 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
             this.quizQuestionComponent.scrollEndSize.set(-1);
             this.showBellSwinging();
         } else {
-          this.stateService.addState(QUIZ_RESULT_STATE_KEY, {
+          this.store.dispatch(setQuizResultData({
             correctQuestionsId: this.listCorrectQuestionsId(),
             questions: this.questions,
             timer: this.timer(),
-            showDialog: true,
-          });
+            showDialog: true
+          }));
           this.router.navigate(['/quiz/result']);
         }
    }
@@ -355,8 +358,9 @@ export class QuizStartedComponent implements OnDestroy, ViewDidEnter {
         this.currentQuestion.set(this.questions[currentQuestionIndex]);
         this.currentQuestionIndex.set(currentQuestionIndex);
       } else {
-        const state = this.stateService.get<QuizResultState>(QUIZ_RESULT_STATE_KEY)!
-        state.showDialog = false;
+        this.store.dispatch(setQuizResultData({
+          showDialog: false
+        } as QuizResultState));
         this.router.navigate(['/quiz/result']);
       }
    }
