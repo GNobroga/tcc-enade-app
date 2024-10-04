@@ -4,7 +4,7 @@
     <ion-title>Bate papo</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content [scrollEvents]="true" (ionScroll)="onScroll()">
   <div class="p-4 flex flex-col gap-5">
     <app-chat-message *ngFor="let _ of messages; let even = even; let index = index" [isOwnMessage]="!even"/>
   </div>

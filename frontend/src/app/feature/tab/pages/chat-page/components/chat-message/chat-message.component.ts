@@ -1,7 +1,8 @@
-import { Component, effect, ElementRef, Input, OnInit, signal } from '@angular/core';
+import { AfterViewChecked, Component, effect, ElementRef, HostListener, Input, OnInit, Renderer2, signal, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api/menuitem';
 import { ChatPageComponent } from '../../chat-page.component';
+import ChatMenuComponent from '../chat-menu/chat-menu.component';
 
 export interface ChatMessageMenuItem {
   label: string;
@@ -12,6 +13,9 @@ export interface ChatMessageMenuItem {
   selector: 'app-chat-message',
   templateUrl: './chat-message.component.html',
   styleUrls: ['./chat-message.component.scss'],
+  queries: {
+    chatMenu: new ViewChild(ChatMenuComponent, { read: ElementRef }),
+  }
 })
 export class ChatMessageComponent {
 
@@ -20,10 +24,13 @@ export class ChatMessageComponent {
 
   menuClosed = signal(true);
 
+  chatMenu!: ElementRef<HTMLElement>;
+
   readonly items: ChatMessageMenuItem[] = [
     {
       label: 'Ver perfil',
       command: () => {
+        this.menuClosed.set(true);
         this.router.navigate(['tabs', 'profile']);
       },
     },
@@ -44,12 +51,12 @@ export class ChatMessageComponent {
         this.parent.chatMessages?.forEach(chatMessage => {
           if (this !== chatMessage) {
             chatMessage.menuClosed.set(true);
+            this.parent.firstClick.set(true);
           }
 
         });
       }
     }, { allowSignalWrites: true })
   }
-
 
 }

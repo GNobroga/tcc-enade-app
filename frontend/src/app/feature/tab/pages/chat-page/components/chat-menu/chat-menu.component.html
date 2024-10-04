@@ -1,0 +1,8 @@
+<div *ngIf="!menuClosed()" class="menu p-2 mt-2 w-[40vw] rounded-lg bg-[var(--ion-color-primary)] border border-solid border-white shadow-lg transition-transform duration-300 ease-out transform">
+  <ul class="menu__list list-none flex flex-col gap-2 text-sm text-white">
+    <li class="menu__item p-3 cursor-pointer rounded-md transition-colors duration-300 hover:bg-opacity-80 hover:bg-white hover:text-[var(--ion-color-primary)]"
+        *ngFor="let item of items" matRipple (click)="item.command()">
+      {{ item.label }}
+    </li>
+  </ul>
+</div>

@@ -22,10 +22,12 @@ import { ChangeNameComponent } from './components/change-name/change-name.compon
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UserStatsComponent } from './pages/user-profile/components/user-stats/user-stats.component';
 import { UserAchievementComponent } from './pages/user-profile/components/user-achievement/user-achievement.component';
+import ChatMenuComponent from './pages/chat-page/components/chat-menu/chat-menu.component';
 
 
 @NgModule({
   declarations: [
+    ChatMenuComponent,
     TabComponent,
     HomePageComponent,
     AchievementPageComponent,
