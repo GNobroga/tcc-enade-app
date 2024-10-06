@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  minio:
+    image: docker.io/bitnami/minio:2022
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - 'minio_data:/data'
+    environment:
+      - MINIO_ROOT_USER=enadif
+      - MINIO_ROOT_PASSWORD=enadif
+      - MINIO_DEFAULT_BUCKETS=enadif
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: enadif
+      MYSQL_DATABASE: enadif
+    ports:
+      - 3306:3306
+
+volumes:
+  minio_data:
+    driver: local
